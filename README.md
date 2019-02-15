@@ -43,7 +43,7 @@ We believe that understanding machine learning is impossible without having a fi
 [(Back to top)](#table-of-contents)
 
 ### 1. Interatcive html notes
-These notes - listed in the **Table of Contents** below - served as an early draft for the second edition of the text. You can also find them in the `notes` directory. Here's an example: <br><br>
+These notes - listed [here](#notes) - served as an early draft for the second edition of the text. You can also find them in the `notes` directory. Here's an example: <br><br>
 
 <p align="center"><img src="html/gifs/html.gif" width="70%" height="auto"></p>
 <br>
