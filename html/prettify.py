@@ -9,6 +9,7 @@ soup = BeautifulSoup(open(filename),"lxml")
 # page_title becomes the page title and series becomes the series name (duh!)
 foo = soup.find_all('h1')[0]
 page_title = foo.next_element
+
 foo = soup.find_all('h2')[0]
 series = foo.next_element
 
@@ -49,9 +50,9 @@ script_1 = '''
 <br><br><br>
 
 <!-- share buttons -->
-<div style="width: 53%; margin:auto;">
+<div style="width: 63%; margin:auto;">
 
-	<div id="1" style="width: 75%; float:left;">
+	<div id="1" style="width: 70%; float:left;">
 		<span style="color:black; font-family:'lato', sans-serif; font-size: 18px;">code</span>
 		<div style="width: 95px; border-bottom: solid 1px; border-color:black;">
 
@@ -67,9 +68,9 @@ script_1 = '''
 		</div>
 	</div>
 
-	<div id="2" style="width: 25%; float:left;">
+	<div id="2" style="width: 30%; float:left;">
 		<span style="color:black; font-family:'lato', sans-serif; font-size: 18px;">share</span>
-		<div style="width: 210px; border-bottom: solid 1px; border-color:black;">
+		<div style="width: 280px; border-bottom: solid 1px; border-color:black;">
 
 			<div class="logo-share"></div>
 			<div class="logo-share"></div>
@@ -98,6 +99,16 @@ script_1 = '''
 					<img src="../../html/pics/facebook.png" width=28 height=28 onmouseover="this.src='../../html/pics/facebook_filled.png';" onmouseout="this.src='../../html/pics/facebook.png';">
 				</a>
 			</div>
+			
+			<div class="logo-share"></div>
+
+			<div class="logo-share">
+				<!-- reddit -->
+				<a target="_blank" href="https://www.reddit.com/submit?url=https%3A%2F%2Fjermwatt.github.io%2Fmachine_learning_refined%2Fnotes%2F'''+series_url+'''%2F'''+ name+'''.html">
+					<img src="../../html/pics/reddit.png" width=28 height=28 onmouseover="this.src='../../html/pics/reddit_filled.png';" onmouseout="this.src='../../html/pics/reddit.png';">
+				</a>
+			</div>
+			
 		</div>
 
 	</div>
@@ -141,9 +152,14 @@ soup.body.insert(0, html_1)
 # # insert it as the last element of body tag, hence: -1
 # soup.body.insert(-1, html_2)
 
+print(page_title)
 
 # This script changes default LateX font to a prettier version
 script_3 = '''
+	<meta property="og:title" content="'''+page_title+'''">
+	<meta property="og:image" content="https://github.com/jermwatt/machine_learning_refined/blob/gh-pages/html/pics/meta.png">
+	<meta property="og:url" content="https://jermwatt.github.io/machine_learning_refined/notes/'''+series_url+'''/'''+ name+'''.html">
+	<meta name="twitter:card" content="summary_large_image">	
 
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
