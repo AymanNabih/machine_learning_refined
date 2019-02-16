@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"/>
-<title>3.5 Automatic Differentiation</title><script src="https://unpkg.com/jupyter-js-widgets@2.0.*/dist/embed.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>3.5 Automatic Differentiation</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'https://unpkg.com/jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
 <style type="text/css">
     /*!
 *
@@ -198,7 +223,6 @@ th {
   *:before,
   *:after {
     background: transparent !important;
-    color: #000 !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
@@ -6743,15 +6767,15 @@ button.close {
 *
 */
 /*!
- *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.2.0');
-  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('../components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../components/font-awesome/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../components/font-awesome/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -6808,6 +6832,19 @@ button.close {
   border: solid 0.08em #eee;
   border-radius: .1em;
 }
+.fa-pull-left {
+  float: left;
+}
+.fa-pull-right {
+  float: right;
+}
+.fa.fa-pull-left {
+  margin-right: .3em;
+}
+.fa.fa-pull-right {
+  margin-left: .3em;
+}
+/* Deprecated as of 4.4.0 */
 .pull-right {
   float: right;
 }
@@ -6823,6 +6860,10 @@ button.close {
 .fa-spin {
   -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
+}
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
 }
 @-webkit-keyframes fa-spin {
   0% {
@@ -6845,31 +6886,31 @@ button.close {
   }
 }
 .fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 .fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 .fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
@@ -7354,6 +7395,7 @@ button.close {
 .fa-twitter:before {
   content: "\f099";
 }
+.fa-facebook-f:before,
 .fa-facebook:before {
   content: "\f09a";
 }
@@ -7366,6 +7408,7 @@ button.close {
 .fa-credit-card:before {
   content: "\f09d";
 }
+.fa-feed:before,
 .fa-rss:before {
   content: "\f09e";
 }
@@ -8003,7 +8046,8 @@ button.close {
 .fa-male:before {
   content: "\f183";
 }
-.fa-gittip:before {
+.fa-gittip:before,
+.fa-gratipay:before {
   content: "\f184";
 }
 .fa-sun-o:before {
@@ -8107,7 +8151,7 @@ button.close {
 .fa-digg:before {
   content: "\f1a6";
 }
-.fa-pied-piper:before {
+.fa-pied-piper-pp:before {
   content: "\f1a7";
 }
 .fa-pied-piper-alt:before {
@@ -8233,6 +8277,7 @@ button.close {
   content: "\f1ce";
 }
 .fa-ra:before,
+.fa-resistance:before,
 .fa-rebel:before {
   content: "\f1d0";
 }
@@ -8246,6 +8291,8 @@ button.close {
 .fa-git:before {
   content: "\f1d3";
 }
+.fa-y-combinator-square:before,
+.fa-yc-square:before,
 .fa-hacker-news:before {
   content: "\f1d4";
 }
@@ -8413,6 +8460,657 @@ button.close {
 }
 .fa-meanpath:before {
   content: "\f20c";
+}
+.fa-buysellads:before {
+  content: "\f20d";
+}
+.fa-connectdevelop:before {
+  content: "\f20e";
+}
+.fa-dashcube:before {
+  content: "\f210";
+}
+.fa-forumbee:before {
+  content: "\f211";
+}
+.fa-leanpub:before {
+  content: "\f212";
+}
+.fa-sellsy:before {
+  content: "\f213";
+}
+.fa-shirtsinbulk:before {
+  content: "\f214";
+}
+.fa-simplybuilt:before {
+  content: "\f215";
+}
+.fa-skyatlas:before {
+  content: "\f216";
+}
+.fa-cart-plus:before {
+  content: "\f217";
+}
+.fa-cart-arrow-down:before {
+  content: "\f218";
+}
+.fa-diamond:before {
+  content: "\f219";
+}
+.fa-ship:before {
+  content: "\f21a";
+}
+.fa-user-secret:before {
+  content: "\f21b";
+}
+.fa-motorcycle:before {
+  content: "\f21c";
+}
+.fa-street-view:before {
+  content: "\f21d";
+}
+.fa-heartbeat:before {
+  content: "\f21e";
+}
+.fa-venus:before {
+  content: "\f221";
+}
+.fa-mars:before {
+  content: "\f222";
+}
+.fa-mercury:before {
+  content: "\f223";
+}
+.fa-intersex:before,
+.fa-transgender:before {
+  content: "\f224";
+}
+.fa-transgender-alt:before {
+  content: "\f225";
+}
+.fa-venus-double:before {
+  content: "\f226";
+}
+.fa-mars-double:before {
+  content: "\f227";
+}
+.fa-venus-mars:before {
+  content: "\f228";
+}
+.fa-mars-stroke:before {
+  content: "\f229";
+}
+.fa-mars-stroke-v:before {
+  content: "\f22a";
+}
+.fa-mars-stroke-h:before {
+  content: "\f22b";
+}
+.fa-neuter:before {
+  content: "\f22c";
+}
+.fa-genderless:before {
+  content: "\f22d";
+}
+.fa-facebook-official:before {
+  content: "\f230";
+}
+.fa-pinterest-p:before {
+  content: "\f231";
+}
+.fa-whatsapp:before {
+  content: "\f232";
+}
+.fa-server:before {
+  content: "\f233";
+}
+.fa-user-plus:before {
+  content: "\f234";
+}
+.fa-user-times:before {
+  content: "\f235";
+}
+.fa-hotel:before,
+.fa-bed:before {
+  content: "\f236";
+}
+.fa-viacoin:before {
+  content: "\f237";
+}
+.fa-train:before {
+  content: "\f238";
+}
+.fa-subway:before {
+  content: "\f239";
+}
+.fa-medium:before {
+  content: "\f23a";
+}
+.fa-yc:before,
+.fa-y-combinator:before {
+  content: "\f23b";
+}
+.fa-optin-monster:before {
+  content: "\f23c";
+}
+.fa-opencart:before {
+  content: "\f23d";
+}
+.fa-expeditedssl:before {
+  content: "\f23e";
+}
+.fa-battery-4:before,
+.fa-battery:before,
+.fa-battery-full:before {
+  content: "\f240";
+}
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
+  content: "\f241";
+}
+.fa-battery-2:before,
+.fa-battery-half:before {
+  content: "\f242";
+}
+.fa-battery-1:before,
+.fa-battery-quarter:before {
+  content: "\f243";
+}
+.fa-battery-0:before,
+.fa-battery-empty:before {
+  content: "\f244";
+}
+.fa-mouse-pointer:before {
+  content: "\f245";
+}
+.fa-i-cursor:before {
+  content: "\f246";
+}
+.fa-object-group:before {
+  content: "\f247";
+}
+.fa-object-ungroup:before {
+  content: "\f248";
+}
+.fa-sticky-note:before {
+  content: "\f249";
+}
+.fa-sticky-note-o:before {
+  content: "\f24a";
+}
+.fa-cc-jcb:before {
+  content: "\f24b";
+}
+.fa-cc-diners-club:before {
+  content: "\f24c";
+}
+.fa-clone:before {
+  content: "\f24d";
+}
+.fa-balance-scale:before {
+  content: "\f24e";
+}
+.fa-hourglass-o:before {
+  content: "\f250";
+}
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
+  content: "\f251";
+}
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
+  content: "\f252";
+}
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
+  content: "\f253";
+}
+.fa-hourglass:before {
+  content: "\f254";
+}
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
+  content: "\f255";
+}
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
+  content: "\f256";
+}
+.fa-hand-scissors-o:before {
+  content: "\f257";
+}
+.fa-hand-lizard-o:before {
+  content: "\f258";
+}
+.fa-hand-spock-o:before {
+  content: "\f259";
+}
+.fa-hand-pointer-o:before {
+  content: "\f25a";
+}
+.fa-hand-peace-o:before {
+  content: "\f25b";
+}
+.fa-trademark:before {
+  content: "\f25c";
+}
+.fa-registered:before {
+  content: "\f25d";
+}
+.fa-creative-commons:before {
+  content: "\f25e";
+}
+.fa-gg:before {
+  content: "\f260";
+}
+.fa-gg-circle:before {
+  content: "\f261";
+}
+.fa-tripadvisor:before {
+  content: "\f262";
+}
+.fa-odnoklassniki:before {
+  content: "\f263";
+}
+.fa-odnoklassniki-square:before {
+  content: "\f264";
+}
+.fa-get-pocket:before {
+  content: "\f265";
+}
+.fa-wikipedia-w:before {
+  content: "\f266";
+}
+.fa-safari:before {
+  content: "\f267";
+}
+.fa-chrome:before {
+  content: "\f268";
+}
+.fa-firefox:before {
+  content: "\f269";
+}
+.fa-opera:before {
+  content: "\f26a";
+}
+.fa-internet-explorer:before {
+  content: "\f26b";
+}
+.fa-tv:before,
+.fa-television:before {
+  content: "\f26c";
+}
+.fa-contao:before {
+  content: "\f26d";
+}
+.fa-500px:before {
+  content: "\f26e";
+}
+.fa-amazon:before {
+  content: "\f270";
+}
+.fa-calendar-plus-o:before {
+  content: "\f271";
+}
+.fa-calendar-minus-o:before {
+  content: "\f272";
+}
+.fa-calendar-times-o:before {
+  content: "\f273";
+}
+.fa-calendar-check-o:before {
+  content: "\f274";
+}
+.fa-industry:before {
+  content: "\f275";
+}
+.fa-map-pin:before {
+  content: "\f276";
+}
+.fa-map-signs:before {
+  content: "\f277";
+}
+.fa-map-o:before {
+  content: "\f278";
+}
+.fa-map:before {
+  content: "\f279";
+}
+.fa-commenting:before {
+  content: "\f27a";
+}
+.fa-commenting-o:before {
+  content: "\f27b";
+}
+.fa-houzz:before {
+  content: "\f27c";
+}
+.fa-vimeo:before {
+  content: "\f27d";
+}
+.fa-black-tie:before {
+  content: "\f27e";
+}
+.fa-fonticons:before {
+  content: "\f280";
+}
+.fa-reddit-alien:before {
+  content: "\f281";
+}
+.fa-edge:before {
+  content: "\f282";
+}
+.fa-credit-card-alt:before {
+  content: "\f283";
+}
+.fa-codiepie:before {
+  content: "\f284";
+}
+.fa-modx:before {
+  content: "\f285";
+}
+.fa-fort-awesome:before {
+  content: "\f286";
+}
+.fa-usb:before {
+  content: "\f287";
+}
+.fa-product-hunt:before {
+  content: "\f288";
+}
+.fa-mixcloud:before {
+  content: "\f289";
+}
+.fa-scribd:before {
+  content: "\f28a";
+}
+.fa-pause-circle:before {
+  content: "\f28b";
+}
+.fa-pause-circle-o:before {
+  content: "\f28c";
+}
+.fa-stop-circle:before {
+  content: "\f28d";
+}
+.fa-stop-circle-o:before {
+  content: "\f28e";
+}
+.fa-shopping-bag:before {
+  content: "\f290";
+}
+.fa-shopping-basket:before {
+  content: "\f291";
+}
+.fa-hashtag:before {
+  content: "\f292";
+}
+.fa-bluetooth:before {
+  content: "\f293";
+}
+.fa-bluetooth-b:before {
+  content: "\f294";
+}
+.fa-percent:before {
+  content: "\f295";
+}
+.fa-gitlab:before {
+  content: "\f296";
+}
+.fa-wpbeginner:before {
+  content: "\f297";
+}
+.fa-wpforms:before {
+  content: "\f298";
+}
+.fa-envira:before {
+  content: "\f299";
+}
+.fa-universal-access:before {
+  content: "\f29a";
+}
+.fa-wheelchair-alt:before {
+  content: "\f29b";
+}
+.fa-question-circle-o:before {
+  content: "\f29c";
+}
+.fa-blind:before {
+  content: "\f29d";
+}
+.fa-audio-description:before {
+  content: "\f29e";
+}
+.fa-volume-control-phone:before {
+  content: "\f2a0";
+}
+.fa-braille:before {
+  content: "\f2a1";
+}
+.fa-assistive-listening-systems:before {
+  content: "\f2a2";
+}
+.fa-asl-interpreting:before,
+.fa-american-sign-language-interpreting:before {
+  content: "\f2a3";
+}
+.fa-deafness:before,
+.fa-hard-of-hearing:before,
+.fa-deaf:before {
+  content: "\f2a4";
+}
+.fa-glide:before {
+  content: "\f2a5";
+}
+.fa-glide-g:before {
+  content: "\f2a6";
+}
+.fa-signing:before,
+.fa-sign-language:before {
+  content: "\f2a7";
+}
+.fa-low-vision:before {
+  content: "\f2a8";
+}
+.fa-viadeo:before {
+  content: "\f2a9";
+}
+.fa-viadeo-square:before {
+  content: "\f2aa";
+}
+.fa-snapchat:before {
+  content: "\f2ab";
+}
+.fa-snapchat-ghost:before {
+  content: "\f2ac";
+}
+.fa-snapchat-square:before {
+  content: "\f2ad";
+}
+.fa-pied-piper:before {
+  content: "\f2ae";
+}
+.fa-first-order:before {
+  content: "\f2b0";
+}
+.fa-yoast:before {
+  content: "\f2b1";
+}
+.fa-themeisle:before {
+  content: "\f2b2";
+}
+.fa-google-plus-circle:before,
+.fa-google-plus-official:before {
+  content: "\f2b3";
+}
+.fa-fa:before,
+.fa-font-awesome:before {
+  content: "\f2b4";
+}
+.fa-handshake-o:before {
+  content: "\f2b5";
+}
+.fa-envelope-open:before {
+  content: "\f2b6";
+}
+.fa-envelope-open-o:before {
+  content: "\f2b7";
+}
+.fa-linode:before {
+  content: "\f2b8";
+}
+.fa-address-book:before {
+  content: "\f2b9";
+}
+.fa-address-book-o:before {
+  content: "\f2ba";
+}
+.fa-vcard:before,
+.fa-address-card:before {
+  content: "\f2bb";
+}
+.fa-vcard-o:before,
+.fa-address-card-o:before {
+  content: "\f2bc";
+}
+.fa-user-circle:before {
+  content: "\f2bd";
+}
+.fa-user-circle-o:before {
+  content: "\f2be";
+}
+.fa-user-o:before {
+  content: "\f2c0";
+}
+.fa-id-badge:before {
+  content: "\f2c1";
+}
+.fa-drivers-license:before,
+.fa-id-card:before {
+  content: "\f2c2";
+}
+.fa-drivers-license-o:before,
+.fa-id-card-o:before {
+  content: "\f2c3";
+}
+.fa-quora:before {
+  content: "\f2c4";
+}
+.fa-free-code-camp:before {
+  content: "\f2c5";
+}
+.fa-telegram:before {
+  content: "\f2c6";
+}
+.fa-thermometer-4:before,
+.fa-thermometer:before,
+.fa-thermometer-full:before {
+  content: "\f2c7";
+}
+.fa-thermometer-3:before,
+.fa-thermometer-three-quarters:before {
+  content: "\f2c8";
+}
+.fa-thermometer-2:before,
+.fa-thermometer-half:before {
+  content: "\f2c9";
+}
+.fa-thermometer-1:before,
+.fa-thermometer-quarter:before {
+  content: "\f2ca";
+}
+.fa-thermometer-0:before,
+.fa-thermometer-empty:before {
+  content: "\f2cb";
+}
+.fa-shower:before {
+  content: "\f2cc";
+}
+.fa-bathtub:before,
+.fa-s15:before,
+.fa-bath:before {
+  content: "\f2cd";
+}
+.fa-podcast:before {
+  content: "\f2ce";
+}
+.fa-window-maximize:before {
+  content: "\f2d0";
+}
+.fa-window-minimize:before {
+  content: "\f2d1";
+}
+.fa-window-restore:before {
+  content: "\f2d2";
+}
+.fa-times-rectangle:before,
+.fa-window-close:before {
+  content: "\f2d3";
+}
+.fa-times-rectangle-o:before,
+.fa-window-close-o:before {
+  content: "\f2d4";
+}
+.fa-bandcamp:before {
+  content: "\f2d5";
+}
+.fa-grav:before {
+  content: "\f2d6";
+}
+.fa-etsy:before {
+  content: "\f2d7";
+}
+.fa-imdb:before {
+  content: "\f2d8";
+}
+.fa-ravelry:before {
+  content: "\f2d9";
+}
+.fa-eercast:before {
+  content: "\f2da";
+}
+.fa-microchip:before {
+  content: "\f2db";
+}
+.fa-snowflake-o:before {
+  content: "\f2dc";
+}
+.fa-superpowers:before {
+  content: "\f2dd";
+}
+.fa-wpexplorer:before {
+  content: "\f2de";
+}
+.fa-meetup:before {
+  content: "\f2e0";
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
 }
 /*!
 *
@@ -8693,6 +9391,10 @@ div.traceback-wrapper {
   max-width: 800px;
   margin: auto;
 }
+div.traceback-wrapper pre.traceback {
+  max-height: 600px;
+  overflow: auto;
+}
 /**
  * Primary styles
  *
@@ -8718,6 +9420,10 @@ body > #header {
   z-index: 100;
 }
 body > #header #header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
   padding-bottom: 5px;
   padding-top: 5px;
   box-sizing: border-box;
@@ -8749,13 +9455,16 @@ body > #header .header-bar {
   padding-top: 1px;
   padding-bottom: 1px;
 }
-@media (max-width: 991px) {
-  #ipython_notebook {
-    margin-left: 10px;
-  }
-}
 [dir="rtl"] #ipython_notebook {
+  margin-right: 10px;
+  margin-left: 0;
+}
+[dir="rtl"] #ipython_notebook.pull-left {
   float: right !important;
+  float: right;
+}
+.flex-spacer {
+  flex: 1;
 }
 #noscript {
   width: auto;
@@ -8790,8 +9499,14 @@ body > #header .header-bar {
 input.ui-button {
   padding: 0.3em 0.9em;
 }
+span#kernel_logo_widget {
+  margin: 0 10px;
+}
 span#login_widget {
   float: right;
+}
+[dir="rtl"] span#login_widget {
+  float: left;
 }
 span#login_widget > .button,
 #logout {
@@ -8907,6 +9622,9 @@ span#login_widget > .button .badge,
   overflow: auto;
   flex: 1;
 }
+.modal-header {
+  cursor: move;
+}
 @media (min-width: 768px) {
   .modal .modal-dialog {
     width: 700px;
@@ -8927,6 +9645,19 @@ span#login_widget > .button .badge,
   display: inline-block;
   margin-bottom: -4px;
 }
+[dir="rtl"] .center-nav form.pull-left {
+  float: right !important;
+  float: right;
+}
+[dir="rtl"] .center-nav .navbar-text {
+  float: right;
+}
+[dir="rtl"] .navbar-inner {
+  text-align: right;
+}
+[dir="rtl"] div.text-left {
+  text-align: right;
+}
 /*!
 *
 * IPython tree view
@@ -8943,34 +9674,42 @@ span#login_widget > .button .badge,
   margin: 0;
 }
 .alternate_upload input.fileinput {
-  text-align: center;
-  vertical-align: middle;
-  display: inline;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
   opacity: 0;
   z-index: 2;
-  width: 12ex;
-  margin-right: -12ex;
+}
+.alternate_upload .btn-xs > input.fileinput {
+  margin: -1px -5px;
 }
 .alternate_upload .btn-upload {
+  position: relative;
   height: 22px;
+}
+::-webkit-file-upload-button {
+  cursor: pointer;
 }
 /**
  * Primary styles
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
   padding-bottom: 4px;
+}
+[dir="rtl"] ul#tabs.nav-tabs > li {
+  float: right;
+}
+[dir="rtl"] ul#tabs.nav.nav-tabs {
+  padding-right: 0;
 }
 ul.breadcrumb a:focus,
 ul.breadcrumb a:hover {
@@ -8990,15 +9729,13 @@ ul.breadcrumb span {
 .list_toolbar .tree-buttons {
   padding-top: 1px;
 }
-[dir="rtl"] .list_toolbar .tree-buttons {
+[dir="rtl"] .list_toolbar .tree-buttons .pull-right {
   float: left !important;
+  float: left;
 }
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
+[dir="rtl"] .list_toolbar .col-sm-4,
+[dir="rtl"] .list_toolbar .col-sm-8 {
+  float: right;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9054,7 +9791,7 @@ ul.breadcrumb span {
 .list_item > div input {
   margin-right: 7px;
   margin-left: 14px;
-  vertical-align: baseline;
+  vertical-align: text-bottom;
   line-height: 22px;
   position: relative;
   top: -1px;
@@ -9064,6 +9801,9 @@ ul.breadcrumb span {
   margin-left: -1px;
   vertical-align: baseline;
   line-height: 22px;
+}
+[dir="rtl"] .list_item > div input {
+  margin-right: 0;
 }
 .new-file input[type=checkbox] {
   visibility: hidden;
@@ -9079,6 +9819,14 @@ ul.breadcrumb span {
   margin-left: 7px;
   line-height: 22px;
   vertical-align: baseline;
+}
+.item_modified {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+[dir="rtl"] .item_modified.pull-right {
+  float: left !important;
+  float: left;
 }
 .item_buttons {
   line-height: 1em;
@@ -9107,6 +9855,14 @@ ul.breadcrumb span {
   margin-right: 7px;
   float: left;
 }
+[dir="rtl"] .item_buttons.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .item_buttons .kernel-name {
+  margin-left: 7px;
+  float: right;
+}
 .toolbar_info {
   height: 24px;
   line-height: 24px;
@@ -9132,18 +9888,32 @@ ul.breadcrumb span {
   background-color: transparent;
   font-weight: bold;
 }
+.sort_button {
+  display: inline-block;
+  padding-left: 7px;
+}
+[dir="rtl"] .sort_button.pull-right {
+  float: left !important;
+  float: left;
+}
 #tree-selector {
   padding-right: 0px;
-}
-[dir="rtl"] #tree-selector a {
-  float: right;
 }
 #button-select-all {
   min-width: 50px;
 }
+[dir="rtl"] #button-select-all.btn {
+  float: right ;
+}
 #select-all {
   margin-left: 7px;
   margin-right: 2px;
+  margin-top: 2px;
+  height: 16px;
+}
+[dir="rtl"] #select-all.pull-left {
+  float: right !important;
+  float: right;
 }
 .menu_icon {
   margin-right: 2px;
@@ -9161,6 +9931,12 @@ ul.breadcrumb span {
   -moz-osx-font-smoothing: grayscale;
   content: "\f114";
 }
+.folder_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.folder_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .folder_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9177,6 +9953,12 @@ ul.breadcrumb span {
   content: "\f02d";
   position: relative;
   top: -1px;
+}
+.notebook_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.notebook_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .notebook_icon:before.pull-left {
   margin-right: .3em;
@@ -9196,6 +9978,12 @@ ul.breadcrumb span {
   top: -1px;
   color: #5cb85c;
 }
+.running_notebook_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.running_notebook_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .running_notebook_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9213,6 +10001,12 @@ ul.breadcrumb span {
   position: relative;
   top: -2px;
 }
+.file_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.file_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .file_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -9227,8 +10021,11 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
+#new-menu .dropdown-header {
+  font-size: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 0 3px;
+  margin: -3px 20px 0;
 }
 .kernel-menu-icon {
   padding-right: 12px;
@@ -9275,9 +10072,6 @@ ul#new-menu {
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
 }
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
-}
 .delete-button {
   display: none;
 }
@@ -9285,6 +10079,12 @@ ul#new-menu {
   display: none;
 }
 .rename-button {
+  display: none;
+}
+.move-button {
+  display: none;
+}
+.download-button {
   display: none;
 }
 .shutdown-button {
@@ -9327,6 +10127,12 @@ ul#new-menu {
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
 }
+.dirty-indicator.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator.fa-pull-right {
+  margin-left: .3em;
+}
 .dirty-indicator.pull-left {
   margin-right: .3em;
 }
@@ -9341,6 +10147,12 @@ ul#new-menu {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
+}
+.dirty-indicator-dirty.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-dirty.fa-pull-right {
+  margin-left: .3em;
 }
 .dirty-indicator-dirty.pull-left {
   margin-right: .3em;
@@ -9357,6 +10169,12 @@ ul#new-menu {
   -moz-osx-font-smoothing: grayscale;
   width: 20px;
 }
+.dirty-indicator-clean.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-clean.fa-pull-right {
+  margin-left: .3em;
+}
 .dirty-indicator-clean.pull-left {
   margin-right: .3em;
 }
@@ -9371,6 +10189,12 @@ ul#new-menu {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f00c";
+}
+.dirty-indicator-clean:before.fa-pull-left {
+  margin-right: .3em;
+}
+.dirty-indicator-clean:before.fa-pull-right {
+  margin-left: .3em;
 }
 .dirty-indicator-clean:before.pull-left {
   margin-right: .3em;
@@ -9416,14 +10240,132 @@ ul#new-menu {
     box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
   }
 }
+.CodeMirror-dialog {
+  background-color: #fff;
+}
 /*!
 *
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -9502,12 +10444,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -9520,27 +10470,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -9736,7 +10698,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -9746,11 +10710,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -10004,6 +10981,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -10042,7 +11022,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -10202,39 +11182,35 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 .rendered_html ul {
   list-style: disc;
-  margin: 0em 2em;
-  padding-left: 0px;
 }
 .rendered_html ul ul {
   list-style: square;
-  margin: 0em 2em;
+  margin-top: 0;
 }
 .rendered_html ul ul ul {
   list-style: circle;
-  margin: 0em 2em;
 }
 .rendered_html ol {
   list-style: decimal;
-  margin: 0em 2em;
-  padding-left: 0px;
 }
 .rendered_html ol ol {
   list-style: upper-alpha;
-  margin: 0em 2em;
+  margin-top: 0;
 }
 .rendered_html ol ol ol {
   list-style: lower-alpha;
-  margin: 0em 2em;
 }
 .rendered_html ol ol ol ol {
   list-style: lower-roman;
-  margin: 0em 2em;
 }
 .rendered_html ol ol ol ol ol {
   list-style: decimal;
-  margin: 0em 2em;
 }
 .rendered_html * + ul {
   margin-top: 1em;
@@ -10248,14 +11224,23 @@ div.output_unrecognized a:hover {
 }
 .rendered_html pre {
   margin: 1em 2em;
+  padding: 0px;
+  background-color: #fff;
+}
+.rendered_html code {
+  background-color: #eff0f1;
+}
+.rendered_html p code {
+  padding: 1px 5px;
+}
+.rendered_html pre code {
+  background-color: #fff;
 }
 .rendered_html pre,
 .rendered_html code {
   border: 0;
-  background-color: #fff;
   color: #000;
   font-size: 100%;
-  padding: 0px;
 }
 .rendered_html blockquote {
   margin: 1em 2em;
@@ -10263,24 +11248,36 @@ div.output_unrecognized a:hover {
 .rendered_html table {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid black;
+  border: none;
   border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
 }
 .rendered_html tr,
 .rendered_html th,
 .rendered_html td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  margin: 1em 2em;
-}
-.rendered_html td,
-.rendered_html th {
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
-  padding: 4px;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
 }
 .rendered_html th {
   font-weight: bold;
+}
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
 }
 .rendered_html * + table {
   margin-top: 1em;
@@ -10307,6 +11304,15 @@ div.output_unrecognized a:hover {
 .rendered_html img.unconfined,
 .rendered_html svg.unconfined {
   max-width: none;
+}
+.rendered_html .alert {
+  margin-bottom: initial;
+}
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] .rendered_html p {
+  text-align: right;
 }
 div.text_cell {
   /* Old browsers */
@@ -10361,8 +11367,17 @@ h6:hover .anchor-link {
   overflow-x: auto;
   overflow-y: hidden;
 }
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered .rendered_html td {
+  max-width: none;
+}
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -10499,6 +11514,28 @@ kbd {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+.jupyter-keybindings {
+  padding: 1px;
+  line-height: 24px;
+  border-bottom: 1px solid gray;
+}
+.jupyter-keybindings input {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.jupyter-keybindings i {
+  padding: 6px;
+}
+.well code {
+  background-color: #ffffff;
+  border-color: #ababab;
+  border-width: 1px;
+  border-style: solid;
+  padding: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
 /* CSS for the cell toolbar */
 .celltoolbar {
   border: thin solid #CFCFCF;
@@ -10631,6 +11668,152 @@ select[multiple].celltoolbar select {
   margin-left: 5px;
   margin-right: 5px;
 }
+.tags_button_container {
+  width: 100%;
+  display: flex;
+}
+.tag-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+}
+.tag-container > * {
+  margin: 0 4px;
+}
+.remove-tag-btn {
+  margin-left: 4px;
+}
+.tags-input {
+  display: flex;
+}
+.cell-tag:last-child:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  /* Fade to background color of cell toolbar */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), #EEE);
+}
+.tags-input > * {
+  margin-left: 4px;
+}
+.cell-tag,
+.tags-input input,
+.tags-input button {
+  display: block;
+  width: 100%;
+  height: 32px;
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 1px;
+  box-shadow: none;
+  width: inherit;
+  font-size: inherit;
+  height: 22px;
+  line-height: 22px;
+  padding: 0px 4px;
+  display: inline-block;
+}
+.cell-tag:focus,
+.tags-input input:focus,
+.tags-input button:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.cell-tag::-moz-placeholder,
+.tags-input input::-moz-placeholder,
+.tags-input button::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.cell-tag:-ms-input-placeholder,
+.tags-input input:-ms-input-placeholder,
+.tags-input button:-ms-input-placeholder {
+  color: #999;
+}
+.cell-tag::-webkit-input-placeholder,
+.tags-input input::-webkit-input-placeholder,
+.tags-input button::-webkit-input-placeholder {
+  color: #999;
+}
+.cell-tag::-ms-expand,
+.tags-input input::-ms-expand,
+.tags-input button::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+.cell-tag[disabled],
+.tags-input input[disabled],
+.tags-input button[disabled],
+.cell-tag[readonly],
+.tags-input input[readonly],
+.tags-input button[readonly],
+fieldset[disabled] .cell-tag,
+fieldset[disabled] .tags-input input,
+fieldset[disabled] .tags-input button {
+  background-color: #eeeeee;
+  opacity: 1;
+}
+.cell-tag[disabled],
+.tags-input input[disabled],
+.tags-input button[disabled],
+fieldset[disabled] .cell-tag,
+fieldset[disabled] .tags-input input,
+fieldset[disabled] .tags-input button {
+  cursor: not-allowed;
+}
+textarea.cell-tag,
+textarea.tags-input input,
+textarea.tags-input button {
+  height: auto;
+}
+select.cell-tag,
+select.tags-input input,
+select.tags-input button {
+  height: 30px;
+  line-height: 30px;
+}
+textarea.cell-tag,
+textarea.tags-input input,
+textarea.tags-input button,
+select[multiple].cell-tag,
+select[multiple].tags-input input,
+select[multiple].tags-input button {
+  height: auto;
+}
+.cell-tag,
+.tags-input button {
+  padding: 0px 4px;
+}
+.cell-tag {
+  background-color: #fff;
+  white-space: nowrap;
+}
+.tags-input input[type=text]:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #ccc;
+}
 .completions {
   position: absolute;
   z-index: 110;
@@ -10656,16 +11839,28 @@ select[multiple].celltoolbar select {
 .completions select option.context {
   color: #286090;
 }
-#kernel_logo_widget {
-  float: right !important;
-  float: right;
-}
 #kernel_logo_widget .current_kernel_logo {
   display: none;
   margin-top: -1px;
   margin-bottom: -1px;
   width: 32px;
   height: 32px;
+}
+[dir="rtl"] #kernel_logo_widget {
+  float: left !important;
+  float: left;
+}
+.modal .modal-body .move-path {
+  display: flex;
+  flex-direction: row;
+  justify-content: space;
+  align-items: center;
+}
+.modal .modal-body .move-path .server-root {
+  padding-right: 20px;
+}
+.modal .modal-body .move-path .path-input {
+  flex: 1;
 }
 #menubar {
   box-sizing: border-box;
@@ -10687,11 +11882,41 @@ select[multiple].celltoolbar select {
 #menubar .navbar-collapse {
   clear: left;
 }
+[dir="rtl"] #menubar .navbar-toggle {
+  float: right;
+}
+[dir="rtl"] #menubar .navbar-collapse {
+  clear: right;
+}
+[dir="rtl"] #menubar .navbar-nav {
+  float: right;
+}
+[dir="rtl"] #menubar .nav {
+  padding-right: 0px;
+}
+[dir="rtl"] #menubar .navbar-nav > li {
+  float: right;
+}
+[dir="rtl"] #menubar .navbar-right {
+  float: left !important;
+}
+[dir="rtl"] ul.dropdown-menu {
+  text-align: right;
+  left: auto;
+}
+[dir="rtl"] ul#new-menu.dropdown-menu {
+  right: auto;
+  left: 0;
+}
 .nav-wrapper {
   border-bottom: 1px solid #e7e7e7;
 }
 i.menu-icon {
   padding-top: 4px;
+}
+[dir="rtl"] i.menu-icon.pull-right {
+  float: left !important;
+  float: left;
 }
 ul#help_menu li a {
   overflow: hidden;
@@ -10699,6 +11924,17 @@ ul#help_menu li a {
 }
 ul#help_menu li a i {
   margin-right: -1.2em;
+}
+[dir="rtl"] ul#help_menu li a {
+  padding-left: 2.2em;
+}
+[dir="rtl"] ul#help_menu li a i {
+  margin-right: 0;
+  margin-left: -1.2em;
+}
+[dir="rtl"] ul#help_menu li a i.pull-right {
+  float: left !important;
+  float: left;
 }
 .dropdown-submenu {
   position: relative;
@@ -10708,6 +11944,10 @@ ul#help_menu li a i {
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
+}
+[dir="rtl"] .dropdown-submenu > .dropdown-menu {
+  right: 100%;
+  margin-right: -1px;
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -10726,11 +11966,23 @@ ul#help_menu li a i {
   margin-top: 2px;
   margin-right: -10px;
 }
+.dropdown-submenu > a:after.fa-pull-left {
+  margin-right: .3em;
+}
+.dropdown-submenu > a:after.fa-pull-right {
+  margin-left: .3em;
+}
 .dropdown-submenu > a:after.pull-left {
   margin-right: .3em;
 }
 .dropdown-submenu > a:after.pull-right {
   margin-left: .3em;
+}
+[dir="rtl"] .dropdown-submenu > a:after {
+  float: left;
+  content: "\f0d9";
+  margin-right: 0;
+  margin-left: -10px;
 }
 .dropdown-submenu:hover > a:after {
   color: #262626;
@@ -10747,6 +11999,10 @@ ul#help_menu li a i {
   float: right;
   z-index: 10;
 }
+[dir="rtl"] #notification_area {
+  float: left !important;
+  float: left;
+}
 .indicator_area {
   float: right !important;
   float: right;
@@ -10757,6 +12013,10 @@ ul#help_menu li a i {
   z-index: 10;
   text-align: center;
   width: auto;
+}
+[dir="rtl"] .indicator_area {
+  float: left !important;
+  float: left;
 }
 #kernel_indicator {
   float: right !important;
@@ -10774,6 +12034,12 @@ ul#help_menu li a i {
   padding-left: 5px;
   padding-right: 5px;
 }
+[dir="rtl"] #kernel_indicator {
+  float: left !important;
+  float: left;
+  border-left: 0;
+  border-right: 1px solid;
+}
 #modal_indicator {
   float: right !important;
   float: right;
@@ -10784,6 +12050,10 @@ ul#help_menu li a i {
   z-index: 10;
   text-align: center;
   width: auto;
+}
+[dir="rtl"] #modal_indicator {
+  float: left !important;
+  float: left;
 }
 #readonly-indicator {
   float: right !important;
@@ -10814,6 +12084,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f040";
 }
+.edit_mode .modal_indicator:before.fa-pull-left {
+  margin-right: .3em;
+}
+.edit_mode .modal_indicator:before.fa-pull-right {
+  margin-left: .3em;
+}
 .edit_mode .modal_indicator:before.pull-left {
   margin-right: .3em;
 }
@@ -10828,6 +12104,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: ' ';
+}
+.command_mode .modal_indicator:before.fa-pull-left {
+  margin-right: .3em;
+}
+.command_mode .modal_indicator:before.fa-pull-right {
+  margin-left: .3em;
 }
 .command_mode .modal_indicator:before.pull-left {
   margin-right: .3em;
@@ -10844,6 +12126,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f10c";
 }
+.kernel_idle_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_idle_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .kernel_idle_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -10858,6 +12146,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f111";
+}
+.kernel_busy_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_busy_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .kernel_busy_icon:before.pull-left {
   margin-right: .3em;
@@ -10874,6 +12168,12 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   content: "\f1e2";
 }
+.kernel_dead_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_dead_icon:before.fa-pull-right {
+  margin-left: .3em;
+}
 .kernel_dead_icon:before.pull-left {
   margin-right: .3em;
 }
@@ -10888,6 +12188,12 @@ ul#help_menu li a i {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f127";
+}
+.kernel_disconnected_icon:before.fa-pull-left {
+  margin-right: .3em;
+}
+.kernel_disconnected_icon:before.fa-pull-right {
+  margin-left: .3em;
 }
 .kernel_disconnected_icon:before.pull-left {
   margin-right: .3em;
@@ -11278,27 +12584,46 @@ div#pager .ui-resizable-handle::after {
   flex: 1;
 }
 span.save_widget {
-  margin-top: 6px;
+  height: 30px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  width: 50%;
+  flex: 1;
 }
 span.save_widget span.filename {
-  height: 1em;
+  height: 100%;
   line-height: 1em;
-  padding: 3px;
   margin-left: 16px;
   border: none;
   font-size: 146.5%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   border-radius: 2px;
 }
 span.save_widget span.filename:hover {
   background-color: #e6e6e6;
 }
+[dir="rtl"] span.save_widget.pull-left {
+  float: right !important;
+  float: right;
+}
+[dir="rtl"] span.save_widget span.filename {
+  margin-left: 0;
+  margin-right: 16px;
+}
 span.checkpoint_status,
 span.autosave_status {
   font-size: small;
+  white-space: nowrap;
+  padding: 0 5px;
 }
 @media (max-width: 767px) {
   span.save_widget {
     font-size: small;
+    padding: 0 0 0 5px;
   }
   span.checkpoint_status,
   span.autosave_status {
@@ -11342,6 +12667,9 @@ span.autosave_status {
   margin-top: 0px;
   margin-left: 5px;
 }
+.toolbar-btn-label {
+  margin-left: 6px;
+}
 #maintoolbar {
   margin-bottom: -3px;
   margin-top: -8px;
@@ -11361,6 +12689,10 @@ span.autosave_status {
 }
 .select-xs {
   height: 24px;
+}
+[dir="rtl"] .btn-group > .btn,
+.btn-group-vertical > .btn {
+  float: right;
 }
 .pulse,
 .dropdown-menu > li > a.pulse,
@@ -11511,6 +12843,10 @@ ul.typeahead-list i {
   margin-left: -10px;
   width: 18px;
 }
+[dir="rtl"] ul.typeahead-list i {
+  margin-left: 0;
+  margin-right: -10px;
+}
 ul.typeahead-list {
   max-height: 80vh;
   overflow: auto;
@@ -11519,6 +12855,13 @@ ul.typeahead-list > li > a {
   /** Firefox bug **/
   /* see https://github.com/jupyter/notebook/issues/559 */
   white-space: normal;
+}
+ul.typeahead-list  > li > a.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .typeahead-list {
+  text-align: right;
 }
 .cmd-palette .modal-body {
   padding: 7px;
@@ -11530,10 +12873,19 @@ ul.typeahead-list > li > a {
   outline: none;
 }
 .no-shortcut {
-  display: none;
+  min-width: 20px;
+  color: transparent;
+}
+[dir="rtl"] .no-shortcut.pull-right {
+  float: left !important;
+  float: left;
+}
+[dir="rtl"] .command-shortcut.pull-right {
+  float: left !important;
+  float: left;
 }
 .command-shortcut:before {
-  content: "(command)";
+  content: "(command mode)";
   padding-right: 3px;
   color: #777777;
 }
@@ -11542,6 +12894,10 @@ ul.typeahead-list > li > a {
   padding-right: 3px;
   color: #777777;
 }
+[dir="rtl"] .edit-shortcut.pull-right {
+  float: left !important;
+  float: left;
+}
 #find-and-replace #replace-preview .match,
 #find-and-replace #replace-preview .insert {
   background-color: #BBDEFB;
@@ -11549,6 +12905,12 @@ ul.typeahead-list > li > a {
   border-style: solid;
   border-width: 1px;
   border-radius: 0px;
+}
+[dir="ltr"] #find-and-replace .input-group-btn + .form-control {
+  border-left: none;
+}
+[dir="rtl"] #find-and-replace .input-group-btn + .form-control {
+  border-right: none;
 }
 #find-and-replace #replace-preview .replace .match {
   background-color: #FFCDD2;
@@ -11845,56 +13207,49 @@ div#notebook {
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Think about how you perform basic arithemetic - say how you perform the multiplication of two numbers.  If the two numbers are small - say $8$ times $7$, or $5$ times $2$ - you can likely do the multiplication in your head.  This is because in school you likely learned a variety of tricks for multiplying two small numbers together - say up to two or three digits each - as well as <em>algorithms</em> for multiplying two arbitrary numbers by hand.  Both the tricks and the algorithm are valuable tools to have when computing e.g., interest on a loan or investment, making quick back of the envelope calculations, etc.,  But even though the algorithm for multiplication is <em>simple</em>, <em>repetitive</em>, and works regardless of the two numbers you multiply together you would likely never compute the product of two arbitrarily large numbers yourself - like $140,283,197,523 \times 224,179,234,112$.  Why?   Because while the algorithm for multiplication is simple and repetitive, it is <em>time consuming</em> and <em>boring</em> for you to enact yourself.  Instead you would likely use a <em>calculator</em> to multiply two arbitrarily large numbers together because it <em>automates the process of using the multiplication algorithm</em>.  An arithmetic calculator allows <em>you</em> to compute with much greater efficiency and accuracy, and empowers you to use the fruits of arithmetic computation for more important tasks.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is precisely how you can think about the computation of derivatives / gradients.  Perhaps you can compute the derivative of simple mathematical functions in your head - like e.g., $g(w) = w^3$ and $g(w) = \text{sin}(w)$.  This is because in school you likely learned a variety of tricks for computing the derivative of simple functions - like sums of elementary polynomials or sinusoids - as well as <em>algorithms</em> for computing the derivative or gradient of arbitrarily complicated functions (if not you can find a refresher on these subjects in the text's Appendix).  These skills are useful - as some level of familiarity with them is requisite in order for one to grasp basic concepts in optimization as well as the examples used to flush them out.  But even though the algorithm for gradient computation is <em>simple</em>, <em>repetitive</em>, and works regardless of mathematical function you wish to differentiate you would likely never compute the gradient of an arbitrarily complicated function yourself - like $g\left(w_1,w_2\right) = 2^{\text{sin}\left(0.1w_1^2 + 0.5w_2^2\right)}\text{tanh}\left(\text{cos}\left(0.2w_1w_2\right)\right)\text{tanh}\left(w_11w_2^4\text{tanh}\left(w_1 + {\text{sin}\left(0.2w_2^2\right)} \right) \right)$.  Why?   Because while the algorithm for computing derivatives is simple and repetitive, it is <em>time consuming</em> and <em>boring</em> for you to enact yourself.  Instead you would likely use a <em>calculator</em> to compute the derivatives of an arbitrary complicated mathematical functions because it <em>automates the process of using the differentiation algorithm</em>.  A gradient calculator allows <em>you</em> to compute with much greater effeciency and accuracy, and empowers you to use the fruits of gradient computation for more important tasks - e.g., for the popular first order <em>local optimization</em> schemes that are widely used in machine learning.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Gradient calculators are more commonly called <em>Automatic Differentiators</em>.  In this Section we demonstrate how to use a simple yet powerful <em>Automatic Differentiator</em> written in <code>Python</code> called <code>autograd</code>, a tool we will make extensive use of throughout the text.  Interested users can also see this text's electronic resources for an analagous walkthrough of the <code>PyTorch</code> version of <code>autograd</code> as well.  In later Chapters and the appendix of this text we will dive deeply into more technical details about how Automatic Differentiators work, but for now we simply need to know <em>how to use one</em> - which is what this Section is all about.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.5.1-Installing-autograd">3.5.1 Installing <code>autograd</code><a class="anchor-link" href="#3.5.1-Installing-autograd">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://github.com/HIPS/autograd">Autorad</a> is an open source professional grade gradient calculator, or <em>Automatic Differentiator</em>.  Built with simplicity in mind, <code>autograd</code> works with the majority of  <code>numpy</code> based library, i.e., it allows you to automatically compute the derivative of functions built with the <code>numpy</code> library.  Esentially <code>autograd</code> can automatically differentiate any mathematical function expressed in <code>Python</code> using basic functionality and methods from the <code>numpy</code> library.  It is also very simple to install: simply open a terminal and type</p>
 <pre><code>                            pip install autograd
@@ -11909,8 +13264,7 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Along with <code>autograd</code> we also highly recommended that you install the Anaconda <code>Python</code> 3 distribution - which you can via the link below</p>
 <p><a href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a></p>
@@ -11919,16 +13273,14 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.5.2-Using-autograd">3.5.2 Using <code>autograd</code><a class="anchor-link" href="#3.5.2-Using-autograd">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here, we show off a few examples highlighting the basic usage of the <code>autograd</code> Automatic Differentiator.  By default this gradient calculator employs the <em>reverse-mode</em> of Automatic Differentiation - also called <em>backpropogation</em> - which we discuss in detail in Chapter 12.  With simple modules we can easily compute compute derivatives of single input functions, and partial derivatives / complete gradients of multi-input functions <em>written in <code>Python</code></em>.  We show how to do this using a variety of examples below.</p>
 <p>Note: If you follow along in the <code>Jupyter</code> notebook version of this Section you can also see how to use the <code>matplotlib</code> plotting library to produce two-dimensional and three-dimensional plots.</p>
@@ -11944,16 +13296,14 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-1.--Computing-derivatives-of-single-input-functions-using-autograd"><span style="color:#a50e3e;">Example 1. </span> Computing derivatives of single-input functions using <code>autograd</code><a class="anchor-link" href="#Example-1.--Computing-derivatives-of-single-input-functions-using-autograd">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since <code>autograd</code> is specially designed to automatically compute the derivative(s) of <code>numpy</code> code, it comes with its own wrapper on the basic <code>numpy</code> library.  This is where the differentiation rules - applied specifically to <code>numpy</code> functionality - is defined.  You can use <code>autograd</code>'s version of <code>numpy</code> exactly like you would the standard version - nothing about the user interface has been changed.  To import this <code>autograd</code> wrapped version of <code>numpy</code> use the line below.</p>
 </div>
@@ -11972,8 +13322,7 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, lets compute a few derivatives using <code>autograd</code>.  We will begin the demonstration with the simple function $g(\left(w\right) = \text{tanh}\left(w\right)$ whose derivative function - written algebraically - is $\frac{\mathrm{d}}{\mathrm{d}w}g\left(w\right) = 1 - \text{sech}^2\left(w\right)$.</p>
 <p>There are two common ways of defining functions in <code>Python</code>.  First the the standard <code>def</code> named <code>Python</code> function declaration like below</p>
@@ -11994,8 +13343,7 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>WIth this declaration <code>Python</code> now understands <code>g</code> as its own function, so it can be called as follows.</p>
 </div>
@@ -12027,8 +13375,7 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also create "anonymous" functions in <code>Python</code> -  functions you can define in a single line of code - by using the <code>lambda</code> command.  We can produce the same function using lambda as shown below.</p>
 </div>
@@ -12047,8 +13394,7 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can then use it with a test value as shown below.</p>
 </div>
@@ -12080,16 +13426,14 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And - of course - regardless of how we define our function in <code>Python</code> it still amounts to the same thing mathematically/computationally.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice one subtlety here (regardless of which kind of <code>Python</code> function we use): the data-type returned by our function matches the type we input.  Above we input a <code>float</code> value to our function, and what is returned is also a <code>float</code>.  If we input the same value as a <code>numpy</code> array then numerically our function of course computes the same evaluation, but evaluation is returned as a <code>numpy</code> array as well.  We illustrate this below.</p>
 </div>
@@ -12131,16 +13475,14 @@ div#notebook {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This factoid has no immediate consequences, but it is worth taking note of to avoid confusion (when e.g., comparing the output when evaluating at single points - which are naturally dealt with by inputing a <code>float</code> - versus multiple points, which is more naturally dealt with by inputing a <code>numpy</code> array).  Much later - when we are constructing considerably complex functions we need to differentiate - this will be something to keep in mind for de-bugging purposes.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can visualize either version of our function by using <code>matplotlib</code> assets, as shown below.  Here we will plot the <code>lambda</code> version - over a fine range of points on the interval $[-5,5]$.</p>
 </div>
@@ -12157,10 +13499,10 @@ div#notebook {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ddba06dc-7883-4d69-a25b-527125558c92"></div>
+<div id="bbbbc67f-279e-48ef-89b5-2c909b30b91e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#ddba06dc-7883-4d69-a25b-527125558c92');
+var element = $('#bbbbc67f-279e-48ef-89b5-2c909b30b91e');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -12941,8 +14283,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, using <code>autograd</code> we can then compute the derivative of our function here automatically.  Below we show the proper import statement and manner of using the gradient calculator - called <code>grad</code>.</p>
 </div>
@@ -12961,8 +14302,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To use <code>grad</code> we simply pass in the function we wish to differentiate.  <code>grad</code> works by <em>explicitly</em> computing the computation graph of our input, giving us a <code>Python</code> function for its derivative that we can then evaluate wherever we want.  It does not provide an <em>algebraic function</em>, but a <em><code>Python</code> function</em>.  Here we call the derivative function of our input <code>dgdw</code>.</p>
 </div>
@@ -12981,8 +14321,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The gradient function can be evaluated like our original <code>Python</code> function - as shown below.</p>
 </div>
@@ -13013,8 +14352,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Just as with our original <code>Python</code> function we can then evaluate our gradient <code>dgdw</code> over a fine range of input and plot the result.  We do this below, plotting the original function as well for comparison.</p>
 </div>
@@ -13031,10 +14369,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="7441a1f6-f462-4e5e-89f5-5ad70fb9e69e"></div>
+<div id="9581524c-dd7b-4b88-836d-413e59a2264e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7441a1f6-f462-4e5e-89f5-5ad70fb9e69e');
+var element = $('#9581524c-dd7b-4b88-836d-413e59a2264e');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -13815,8 +15153,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can compute higher order derivatives of our input function by using the same <code>autograd</code>  functionality recursively, i.e., by plugging in the derivative <code>dgdw</code> into <code>autograd</code>'s <code>grad</code> function.  Doing this once gives us the second derivative <code>Python</code> function - which we call <code>dgdw2</code> - as shown below.</p>
 </div>
@@ -13835,8 +15172,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can then plot the input function, as well as the first and second derivatives, as shown below.</p>
 </div>
@@ -13853,10 +15189,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="b97a2f33-8dde-4223-85a2-62b1bdefe2f1"></div>
+<div id="f0b631b4-e1d3-4400-b904-e33cde0685b6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b97a2f33-8dde-4223-85a2-62b1bdefe2f1');
+var element = $('#f0b631b4-e1d3-4400-b904-e33cde0685b6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14637,32 +15973,28 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-2.--Remember,-whenever-you-use-an-Automatic-Differentiatior-to-evaluate-a-gradient-you-are-explicitly-evaluating-the-function-as-well"><span style="color:#a50e3e;">Example 2. </span> Remember, whenever you use an Automatic Differentiatior to evaluate a gradient you are explicitly evaluating the function as well<a class="anchor-link" href="#Example-2.--Remember,-whenever-you-use-an-Automatic-Differentiatior-to-evaluate-a-gradient-you-are-explicitly-evaluating-the-function-as-well">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Above you may notice that the derivative function <code>dgdw</code> we have constructed returns only the derivative evaluation, and not the function evaluation itself (we have computed this separately when e.g., plotting a range of function / derivative values above).  However as we described in the previous Sections, an Automatic Differentiator will always need to compute the value of the function itself whenever we use it to compute a derivative / gradient evaluation.  <em>So - in other words - whenever we evaluate the gradient, we get the function evaluation for free</em>.  This is a very handy technical fact which will save us a ton of computation later on when we discuss e.g., supervised learning models.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can already see an example of the waste - e.g., in the previous example when we evaluated / plotted the function and its first derivative there was no need to actually evaluate the function explicitly since these computations are already performed when we evaluate the gradient.  However when we used <code>autograd</code>'s <code>grad</code> functionality to compute the gradient of our function in the previous example, and then evaluated it at a single point, <code>grad</code> only returned a single value: the evaluation of the derivative.  No function evaluation was returned - so where is the mirror function evaluation?  Well the function evaluation is indeed being computed 'under the hood' of <code>grad</code>, it is simply not being returned via this method.  This is a design choice made by the authors of <code>autograd</code> to keep the interface of <code>grad</code> - their introductary Automatic Differentiation method - easy to pick up and use for a wide audience.  Later when the need to re-compute function evaluations becomes quite costly we will use this <code>autograd</code> method exclusively (one can view the entire list of <code>autograd</code> <a href="https://github.com/HIPS/autograd/blob/master/autograd/differential_operators.py">methods available here</a>.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now there is another <code>autograd</code> method called <code>value_and_grad</code> that returns everything computed 'under the hood' -  both the derivative(s) and function evaluations.  Below we use this <code>autograd</code> functionality to re-produce the previous example first derivative calculations.</p>
 </div>
@@ -14689,8 +16021,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We have our derivative function <code>dgdw</code> above computed now using <code>value_and_grad</code>.  Below we plug in a single point into this derivative function, and what is returned is both the function (left value) and derivative (right value) evaluation.  This function evaluation comes 'for free' whenever we evaluate the derivative - we need not evaluate the function itself again.</p>
 </div>
@@ -14721,8 +16052,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we use this to plot both the function and derivative over the same range used in the previous example - again without re-computing the function evaluations.</p>
 </div>
@@ -14739,10 +16069,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="1ffbd956-3f51-4d4d-90d9-a3c531f7e92f"></div>
+<div id="bde4c081-993a-4d09-831c-00bd705b6c62"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1ffbd956-3f51-4d4d-90d9-a3c531f7e92f');
+var element = $('#bde4c081-993a-4d09-831c-00bd705b6c62');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15523,22 +16853,19 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-3.--Computing-Taylor-series-approximations"><span style="color:#a50e3e;">Example 3. </span> Computing Taylor series approximations<a class="anchor-link" href="#Example-3.--Computing-Taylor-series-approximations">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using <code>autograd</code> we can quickly illustrate Taylor series approximations (see the Appendix for definition) of any single-input function.  Below we illustrate the <code>tanh</code> function, along with a first order Taylor series approximation</p>
-<p>\begin{equation}
+\begin{equation}
 h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0)
-\end{equation}</p>
-<p>centered at the point $w^0 = 1$.  First we produce this function and its first order Taylor series approximation in <code>Python</code> below.</p>
+\end{equation}<p>centered at the point $w^0 = 1$.  First we produce this function and its first order Taylor series approximation in <code>Python</code> below.</p>
 </div>
 </div>
 </div>
@@ -15560,8 +16887,7 @@ h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0)
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we evaluate and plot the function and its first order approximation.  The function is shown in black, its first order approximation centered at $w_0 = 1$ is shown in green, and the point of tangency with the function shown as a red point.</p>
 </div>
@@ -15578,10 +16904,10 @@ h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0)
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="147bced6-e1d1-45cf-a412-dfdaa076f575"></div>
+<div id="c38388c9-3e77-4dec-ba84-d96ee4e80720"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#147bced6-e1d1-45cf-a412-dfdaa076f575');
+var element = $('#c38388c9-3e77-4dec-ba84-d96ee4e80720');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16362,19 +17688,17 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Its just as easy to show the second order Taylor series approximation as well, whose formula is given as</p>
-<p>\begin{equation}
+\begin{equation}
 h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0) +  \frac{1}{2}\frac{\mathrm{d}^2}{\mathrm{d}w^2}g(w^0)(w - w^0)^2.
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below we compute and plot both the <code>tanh</code> function, along with its first and second order Taylor series approximations at the point $w^0 = 1$.</p>
 </div>
@@ -16397,8 +17721,7 @@ h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0) +  \frac{1}{2}\fra
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first and second order approximations are shown below in green and blue respectively, with the point of expansion again shown as a red point.</p>
 </div>
@@ -16415,10 +17738,10 @@ h(w) = g(w^0) + \frac{\mathrm{d}}{\mathrm{d}w}g(w^0)(w - w^0) +  \frac{1}{2}\fra
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="adcef4a6-9acd-4fe8-aa18-5e8b0e048090"></div>
+<div id="331cf6a2-7a3d-40e6-8de4-ccc8084b81a1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#adcef4a6-9acd-4fe8-aa18-5e8b0e048090');
+var element = $('#331cf6a2-7a3d-40e6-8de4-ccc8084b81a1');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17199,30 +18522,26 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-4.--Computing-individual-partial-derivatives-of-a-multi-input-functions-using-autograd"><span style="color:#a50e3e;">Example 4. </span> Computing individual partial derivatives of a multi-input functions using <code>autograd</code><a class="anchor-link" href="#Example-4.--Computing-individual-partial-derivatives-of-a-multi-input-functions-using-autograd">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are a number of ways we can go about using <code>autograd</code> to compute the partial derivatives of a multi-input function.  First lets look at how to use <code>autograd</code> to compute partial derivatives individually, or one-at-a-time.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As an example lets look at the following function</p>
-<p>\begin{equation}
+\begin{equation}
 g\left(w_1,w_2\right) = \text{tanh}\left(w_1w_2\right).
-\end{equation}</p>
-<p>This simple function takes in two inputs - $w_1$ and $w_2$ - and here we have written them out <em>explicitly</em>.  Below we translate this function into <code>Python</code> - note here we use the longer form <code>def</code> version of a <code>Python</code> function, but we could of course use the pithier <code>lambda</code> version if we like.</p>
+\end{equation}<p>This simple function takes in two inputs - $w_1$ and $w_2$ - and here we have written them out <em>explicitly</em>.  Below we translate this function into <code>Python</code> - note here we use the longer form <code>def</code> version of a <code>Python</code> function, but we could of course use the pithier <code>lambda</code> version if we like.</p>
 </div>
 </div>
 </div>
@@ -17240,8 +18559,7 @@ g\left(w_1,w_2\right) = \text{tanh}\left(w_1w_2\right).
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Taking in two inputs, this function lives in three dimensions.  Below we plot it over a small range of its input.</p>
 </div>
@@ -17258,10 +18576,10 @@ g\left(w_1,w_2\right) = \text{tanh}\left(w_1w_2\right).
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="656a67d0-2914-42f8-890b-25540ffaae8c"></div>
+<div id="0c9b0961-9754-4ce3-a3c9-b09b50b274b2"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#656a67d0-2914-42f8-890b-25540ffaae8c');
+var element = $('#0c9b0961-9754-4ce3-a3c9-b09b50b274b2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -18042,23 +19360,21 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we use <code>autograd</code>'s <code>grad</code> function to compute the two partial derivative functions here.  In this example since our function $g$ takes in two inputs its gradient consists of two partial derivative functions each of which takes in the two inputs $w_1$ and $w_2$ as well</p>
-<p>\begin{equation}
+\begin{equation}
 \nabla g\left(w_1,w_2\right) = 
 \begin{bmatrix}
 \frac{\partial}{\partial w_1}g\left(w_1,w_2\right) \\
 \frac{\partial}{\partial w_2}g\left(w_1,w_2\right)
 \end{bmatrix}.
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can use the same <code>autograd</code> functionality used previously with single input functions here, with one simple addition - now we specify which partial derivative function we wish to construct.  If we use the exact same call we used e.g., in the previous example and write</p>
 <pre><code>                                    grad(g)
@@ -18096,8 +19412,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These two partial derivative functions can now be used precisely as the original function $g$ in <code>Python</code>, which we do to produce plots of each as shown below.</p>
 </div>
@@ -18114,10 +19429,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="98cd0769-a1a7-4590-b74d-b170f419e4d7"></div>
+<div id="88504096-e506-46eb-979b-40a36c6e4f3d"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#98cd0769-a1a7-4590-b74d-b170f419e4d7');
+var element = $('#88504096-e506-46eb-979b-40a36c6e4f3d');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -18898,16 +20213,14 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-5.--Computing-several-derivatives-or-the-full-gradient-of-a-multi-input-functions-using-autograd"><span style="color:#a50e3e;">Example 5. </span> Computing several derivatives or the full gradient of a multi-input functions using <code>autograd</code><a class="anchor-link" href="#Example-5.--Computing-several-derivatives-or-the-full-gradient-of-a-multi-input-functions-using-autograd">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Building on the previous example, here we look at how to use <code>autograd</code> to construct several partial derivative functions or the entire gradient of a multi-input function.  We do this via example, using the same of function employed in the previous example.</p>
 <p>There are two ways to construct multiple partial derivative functions at once - including the full gradient - using <code>autograd</code>.  The first way is to simply index all the partial derivatives desired using the same sort of notation introduced previously.  So here - for example - if we wish to construct the full gradient of our function (it has two partial derivatives) we tell <code>autograd</code> of this desire by feeding in the two indices $(0,1)$ as shown below</p>
@@ -18919,8 +20232,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We do this below for the function shown in the previous example, producing a function for its complete gradient.</p>
 </div>
@@ -18939,8 +20251,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The second way to construct several derivatives at once using <code>autograd</code> is by writing a function in <code>numpy</code> where all the desired variables we wish to differentiate with respect to are all input into the function as a <em>single argument</em>.  For example, if instead of writing out our function in <code>Python</code> as</p>
 </div>
@@ -18960,8 +20271,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>where both $w_1$ and $w_2$ are fed in one-at-a-time, if we write it equivalently using vector-notation where $\mathbf{w} = \begin{bmatrix}w_1 \\ w_2 \end{bmatrix}$ as</p>
 </div>
@@ -18980,8 +20290,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>then the call</p>
 <pre><code>                                    grad(g)
@@ -18996,8 +20305,7 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This indexing format holds more generally as well - if in the way we express a function in <code>numpy</code> it takes in $N$ inputs, the statement</p>
 <pre><code>                                    grad(g,n-1)
@@ -19008,19 +20316,17 @@ if (IPython.notebook.kernel != null) {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As another example, take the inner product function of two length $M$ vectors $\mathbf{a}$ and $\mathbf{b}$</p>
-<p>\begin{equation}
+\begin{equation}
 g\left(\mathbf{a},\mathbf{b}\right) = \mathbf{a}^T\mathbf{b}
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Writing</p>
 <pre><code>                                    grad(g)
@@ -19039,74 +20345,66 @@ g\left(\mathbf{a},\mathbf{b}\right) = \mathbf{a}^T\mathbf{b}
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.5.3-Automatic-Differentiation-versus-Numerical-and-Symoblic-Differentiation">3.5.3 Automatic Differentiation versus Numerical and Symoblic Differentiation<a class="anchor-link" href="#3.5.3-Automatic-Differentiation-versus-Numerical-and-Symoblic-Differentiation">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Automatic Differentiators are gradient calculators that compute and provide a <em>compute program-based</em> function for evaluating the derivative(s) of a function.  There are however other kinds of gradient calculators - including <em>Numerical Differentators</em> and <em>Symbolic Differentiators</em>.  The former are built using the fundamental <em>limit definition</em> of the derivative (not the derivative rules themselves).  While simple to implement they have stability issues that make them less useful as a universal gradient calculator (this is discussed in further detail in the text's appendix).  Symbolic Differentiators - which computes an algebraic formula for derivatives instead of a compute program function - are far less useful for our applications since we primarily need <em>programmatic gradient functions</em> (for use in local optimization schemes).  In addition, algebraic derivative equations can quickly become unweildly and require large amounts of memory to represent (particularly with multi-input functions, which we deal with extensively in machine learning).</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.5.4--Flattening-mathematical-functions-using-autograd">3.5.4  Flattening mathematical functions using <code>autograd</code><a class="anchor-link" href="#3.5.4--Flattening-mathematical-functions-using-autograd">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Mathematical functions come in all shapes and sizes and - moreover - we can often express indnividual equations in a variety of different ways.  This short section discusses a standardization technique called <em>function flattening</em>, which allows us to express any mathematical function  in the generic form $g\left(\mathbf{w}\right)$ we have been using thus far.  Flattening is a particularly useful <em>pre-processing</em> step as it allows us to more broadly understand the fundamental optimization precepts we have / will see as well as more easily <em>implement</em> (in code) local optimization steps of the generic form</p>
-<p>\begin{equation}
+\begin{equation}
 \mathbf{w}^{k} = \mathbf{w}^{k-1} + \alpha \, \mathbf{d}^{k}.
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Take the following quadratic function $f$ of two $N\times 1$ variables $\mathbf{a}$ and $\mathbf{b}$</p>
-<p>\begin{equation}
+\begin{equation}
 f\left(\mathbf{a},\mathbf{b} \right) = \left(\sum_{n=1}^{N} a_nb_n\right)^2.
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This function is not written in the generic form $g\left(\mathbf{w}\right)$ we have used throughout this Chapter (and which we will use throughout future Chapters as well), but of course all of the principles and algorithms we have seen / will see still apply to it.  So we can e.g., apply gradient descent to minimize the function.  To do this however we need to compute the gradient of $h$ with respect to  each input variable $\mathbf{a}$ and $\mathbf{b}$, and descend in each input variable as</p>
-<p>\begin{equation}
+\begin{equation}
 \begin{array}
 \
 \mathbf{a}^k = \mathbf{a}^{k-1} - \alpha \, \nabla_{\mathbf{a}}\,f\left(\mathbf{a}^{k-1},\mathbf{b}^{k-1}\right) \\
 \mathbf{b}^k = \mathbf{b}^{k-1} - \alpha \, \nabla_{\mathbf{b}}\,f\left(\mathbf{a}^{k-1},\mathbf{b}^{k-1}\right) \\
 \end{array}
-\end{equation}</p>
-<p>in order to complete the $k^{th}$ step.</p>
+\end{equation}<p>in order to complete the $k^{th}$ step.</p>
 <p>There is a absolutely nothing wrong with this - it is a valid gradient descent step for the function given above.  It is however slightly more cumbersome to write - and implement - than a function of a single set of inputs like our standard $g\left(\mathbf{w}\right)$ whose descent step can be written and implemented in a single line (one taken in $\mathbf{w}$).  This annoyance is greatly amplified when dealing with functions of many inputs variables - which can be scalars, vectors, or even matrices - which we will regularly encounter during our machine learning voyage.  For such functions, in order to take a single gradient descent step we must <em>loop</em> over their many different input variables.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Thankfully every mathematical function can be re-expressed so that <em>all</em> of its input variables are represented as a single contiguous array $\mathbf{w}$, which alleivates this irritation.  For example in the example above we can easily see that by <em>re-indexing</em> entries of $\mathbf{a}$ and $\mathbf{b}$ using a single array as</p>
-<p>\begin{equation}
+\begin{equation}
 \mathbf{w} = 
 \begin{bmatrix}
 a_1 \\
@@ -19124,25 +20422,22 @@ w_{N+1} \\
 \vdots \\
 w_{2N} \\
 \end{bmatrix}
-\end{equation}</p>
-<p>the function in equation (1) above can then be equivalently written as</p>
-<p>\begin{equation}
+\end{equation}<p>the function in equation (1) above can then be equivalently written as</p>
+\begin{equation}
 g\left(\mathbf{w}\right) = \sum_{n=1}^N\left(w_nw_{n+N}\right)^2.
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Again note that all we have really done here is <em>re-indexed</em> the entries of both input vectors in a contiguous manner.  When expressed in this standardized manner we can both more easily reference optimization principles (which were scribed in Sections for functions in this standard form) and implement local optimization schemes like gradient descent in a less cumbersome way in a single line of algebra or <code>autograd</code> <code>Python</code> code, instead of requiring a loop over each input variable.  This variable re-indexing scheme is called <em>function flattening</em>, and can be applied to any mathematical function in principle.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>While performing the re-indexing required to flatten a function properly by hand for each and every function we come across is important, it (like derivative computation itself) is a repetitive and time consuming operations for human to perform themselves.  Therefore <em>in practice</em> we will automate this task, employing a flattening module from the <code>Python</code> <code>autograd</code> library.  This module can be imported from the <code>autograd</code> library (introduced in the previous Section) via the line below.</p>
 </div>
@@ -19161,8 +20456,7 @@ g\left(\mathbf{w}\right) = \sum_{n=1}^N\left(w_nw_{n+N}\right)^2.
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To flatten a mathematical function scribed in <code>numpy</code> and <code>Python</code> called <code>f</code> - written in such a way that it takes in a single list containing all of its input variables - we then simply call the line below.  Here on the right hand side <code>weights</code> is a list of initializations for input variables to the function <code>f</code>.  The outputs <code>g</code>, <code>unflatten_func</code>, and <code>w</code> are the flattened version of <code>f</code>, a module to unflatten the input weights, and a flattened version of the intitial weights respectively.</p>
 </div>
@@ -19181,53 +20475,47 @@ g\left(\mathbf{w}\right) = \sum_{n=1}^N\left(w_nw_{n+N}\right)^2.
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This flattened function and initialization can then be directly used with the gradient descent implementation given above.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Example-5.---Gradient-descent-on-a-flattened-function"><span style="color:#a50e3e;">Example 5. </span>  Gradient descent on a flattened function<a class="anchor-link" href="#Example-5.---Gradient-descent-on-a-flattened-function">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this example we take the following function of several variables - a scalar, vector, and matrix</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>\begin{equation}
+\begin{equation}
 f\left(a,\mathbf{b},\mathbf{C}\right) = 
 \left(a + \mathbf{z}^T\mathbf{b} + 
 \mathbf{z}^T\mathbf{C}\mathbf{z} 
 \right)^2
-\end{equation}</p>
+\end{equation}
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>and flatten it using the <code>autograd</code> module <code>flatten_func</code> in order to then minimize it using the gradient descent implementation given above.  Here the input variable $a$ is a scalar, $\mathbf{b}$ is a $2 \times 1$ vector, $\mathbf{C}$ is a $2\times 2$ matrix, and the non-variable vector $\mathbf{z}$ is fixed at $\mathbf{z} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <figure>
 <img height="250/" src="../../mlrefined_images/math_optimization_images/flattening.png" width="700"/>
@@ -19239,8 +20527,7 @@ f\left(a,\mathbf{b},\mathbf{C}\right) =
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below we define a <code>Python</code> version of the function defined above.  Note here that the input to this implementation is a list of the functions input variables (or weights).</p>
 </div>
@@ -19264,8 +20551,7 @@ f\left(a,\mathbf{b},\mathbf{C}\right) =
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By using the <code>flatten_func</code> module as shown above we can then minimize the flattened version of this function properly.  We show a cost function history from one run of gradient descent below - where $15$ steps were taken from a random initialization.  This run reaches a point very near the function's minimum at the origin.</p>
 </div>
@@ -19282,10 +20568,10 @@ f\left(a,\mathbf{b},\mathbf{C}\right) =
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="c43129e3-54f5-472d-8f6a-2b5dcd1ce381"></div>
+<div id="96529403-267c-4639-8d96-40dfa1de4010"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c43129e3-54f5-472d-8f6a-2b5dcd1ce381');
+var element = $('#96529403-267c-4639-8d96-40dfa1de4010');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
