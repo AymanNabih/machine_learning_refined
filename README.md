@@ -56,7 +56,7 @@ Feel free to take a peek under the hood, tweak the models, explore new datasets,
 
 ### 3. Coding exercises (1st edition)
 
-In the `exercises` directory you can find starting wrappers for coding exercise from the first edition of the text in `Python` and `MATLAB`. Exercises for the 2nd edition will be added soon.
+In the `exercises` directory you can find starting wrappers for coding exercises from the first edition of the text in `Python` and `MATLAB`. Exercises for the 2nd edition will be added soon.
 <br><br><br>
 
 
