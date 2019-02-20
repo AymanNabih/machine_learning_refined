@@ -13234,7 +13234,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To predict the label $y$ of an input $\mathbf{x}$ we then process this model through an appropriate step function. Since we by default use label values $y_p \in \left\{-1,+1\right\}$ this step function is conveniently defined by the $\text{sign}\left(\cdot\right)$ function (as detailed in Section 6.2), and the predicted label for $\mathbf{x}$ is given as</p>
+<p>To predict the label $y$ of an input $\mathbf{x}$ we then process this model through an appropriate step function. Since we by default use label values $y_p \in \left\{-1,+1\right\}$ this step function is conveniently defined by the $\text{sign}\left(\cdot\right)$ function (as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_3_Softmax.html">Section 6.3</a>), and the predicted label for $\mathbf{x}$ is given as</p>
 \begin{equation}
 \text{sign}\,\left(\text{model}\left(\mathbf{x},\mathbf{w}^{\star}\right)\right) = y_{\,}.
 \end{equation}
@@ -13276,8 +13276,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The notion of 'confidence' can be made precise and normalized to be universally applicable by running the point's distance to the boundary through the <em>sigmoid function</em> (see Section 6.1).  This gives the confidence that a point belongs to class $+1$.</p>
-<p>The signed distance $d$ from a point to the decision boundary provided by our trained model can be computed (see Section 6.3.4) as</p>
+<p>The notion of 'confidence' can be made precise and normalized to be universally applicable by running the point's distance to the boundary through the <em>sigmoid function</em> (see  <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a>).  This gives the confidence that a point belongs to class $+1$.</p>
+<p>The signed distance $d$ from a point to the decision boundary provided by our trained model can be computed (see <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>) as</p>
 \begin{equation}
 d =  \frac{b^{\star} + \overset{\,}{\mathbf{x}}_{p}^T\boldsymbol{\omega^{\star}} }{\left\Vert \overset{\,}{\boldsymbol{\omega}^{\star}} \right\Vert_2 }.
 \end{equation}<p>where we denote</p>
@@ -13348,7 +13348,7 @@ w_N^{\star}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Our classification cost functions are - in the end - based on smooth approximations to a discrete step function.  This is the function we trully wish to use, i.e., the function through which we truly want to tune the parameters of our model.  However since we cannot easily optimize this step function - as discussed in Sections 6.1 and 6.2 - we settle for a smooth approximation.  The consequences of this practical choice are seen when we compare the cost function history from a run of gradient descent to the corresponding misclassification count measured at each step of the run.  We show such a comparison using  the dataset from Example 1 of Section 6.3.1.  In fact we show such results of three independent runs of gradient descent, with the history of misclassifications shown in the left panel and corresponding Softmax cost histories show in the right panel.  Each run is color-coded to distinguish it from the other runs.</p>
+<p>Our classification cost functions are - in the end - based on smooth approximations to a discrete step function.  This is the function we trully wish to use, i.e., the function through which we truly want to tune the parameters of our model.  However since we cannot easily optimize this step function - as discussed in Sections <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">6.2</a> and <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_3_Softmax.html">6.3</a> - we settle for a smooth approximation.  The consequences of this practical choice are seen when we compare the cost function history from a run of gradient descent to the corresponding misclassification count measured at each step of the run.  We show such a comparison using  the dataset from Example 1 of <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>.  In fact we show such results of three independent runs of gradient descent, with the history of misclassifications shown in the left panel and corresponding Softmax cost histories show in the right panel.  Each run is color-coded to distinguish it from the other runs.</p>
 </div>
 </div>
 </div>
@@ -13363,10 +13363,10 @@ w_N^{\star}
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ab74e7cc-efa3-4634-aa4b-420aeb42f37e"></div>
+<div id="d783fcea-6cfa-450c-882f-821e458d81a7"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#ab74e7cc-efa3-4634-aa4b-420aeb42f37e');
+var element = $('#d783fcea-6cfa-450c-882f-821e458d81a7');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

@@ -13245,7 +13245,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To express PCA as a <em>matrix factorization problem</em> all we must do is re-cast the PCA Least Squares cost function described in equation (2) of Section 9.2 more compactly in terms of matrices.  Denoting by $\mathbf{X}$ and $\mathbf{W}$ the $N\times P$ and $K \times P$ matrices of the data and weights stacked column-wise (respectively), the cost function in equation (2) can be written equivalently in terms of matrix notation as</p>
+<p>To express PCA as a <em>matrix factorization problem</em> all we must do is re-cast the PCA Least Squares cost function described in equation (2) of <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_3_PCA.html">Section 8.3</a> more compactly in terms of matrices.  Denoting by $\mathbf{X}$ and $\mathbf{W}$ the $N\times P$ and $K \times P$ matrices of the data and weights stacked column-wise (respectively), the cost function in equation (2) can be written equivalently in terms of matrix notation as</p>
 \begin{equation}
 g\left(\mathbf{W},\mathbf{C}\right) = \frac{1}{P}\left \Vert \mathbf{C}\mathbf{W} - \mathbf{X} \right\Vert_F^2.
 \end{equation}
@@ -13265,7 +13265,7 @@ g\left(\mathbf{W},\mathbf{C}\right) = \frac{1}{P}\left \Vert \mathbf{C}\mathbf{W
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Recommender Systems, as we saw in Section 9.3, results in a cost function that mirrors that of PCA's, only is restricted only to the elements of the $\mathbf{X}$ which are known.  There we used an index set <em>per column</em> of the (ratings) matrix as $\Omega_p = \left \{\,\,j\,\,\rvert \,\,x_{j,\,p}  \,\,\text{exists}  \right \}$, however combining these into a single index set $\Omega = \left \{\,\,\left(\,j,\,p\right)\,\,\rvert \,\,x_{j,\,p}  \,\,\text{exists}  \right \}$ we can likewise write out the Recommender System cost function using matrix notation as</p>
+<p>Recommender Systems, as we saw in <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_6_Recommender.html">Section 8.6</a>, results in a cost function that mirrors that of PCA's, only is restricted only to the elements of the $\mathbf{X}$ which are known.  There we used an index set <em>per column</em> of the (ratings) matrix as $\Omega_p = \left \{\,\,j\,\,\rvert \,\,x_{j,\,p}  \,\,\text{exists}  \right \}$, however combining these into a single index set $\Omega = \left \{\,\,\left(\,j,\,p\right)\,\,\rvert \,\,x_{j,\,p}  \,\,\text{exists}  \right \}$ we can likewise write out the Recommender System cost function using matrix notation as</p>
 \begin{equation}
 g\left(\mathbf{W},\mathbf{C}\right) = \frac{1}{P}\left \Vert \left.\left\{ \mathbf{C}\mathbf{W} - \mathbf{X} \right\}\right\vert_{\Omega} \right\Vert_F^2.
 \end{equation}<p>where the symbol $\left. \left\{\cdot \right\}\right\vert_{\Omega}$ is used to denote that we only care about entries in the index set $\Omega$.  Again rolling back to the desired approximation with Recommender Systems using this notation we have the same matrix factorization desire as PCA, only restricted to the same index set</p>

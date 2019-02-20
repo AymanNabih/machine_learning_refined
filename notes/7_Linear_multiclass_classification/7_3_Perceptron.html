@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this Section we discuss a natural alternative to OvA multi-class classification detailed in the previous Section.   Instead of training $C$ two class classifiers <em>first</em> and <em>then</em> fusing them into a single decision boundary (via the <em>fusion rule</em>), we can train all $C$ classifiers <em>simultaneously</em> to explicitly satisfy the fusion rule directly.  In particular here we derive the <em>Multi-class Perceptron</em> cost for achieving this feat, which can be thought of as a direct generalization of the two class perceptron described in Section 6.3.</p>
+<p>In this Section we discuss a natural alternative to OvA multi-class classification detailed in the previous Section.   Instead of training $C$ two class classifiers <em>first</em> and <em>then</em> fusing them into a single decision boundary (via the <em>fusion rule</em>), we can train all $C$ classifiers <em>simultaneously</em> to explicitly satisfy the fusion rule directly.  In particular here we derive the <em>Multi-class Perceptron</em> cost for achieving this feat, which can be thought of as a direct generalization of the two class perceptron described in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>.</p>
 </div>
 </div>
 </div>
@@ -13257,7 +13257,7 @@ y_p =   \underset{c \,=\, 0,...,C-1}{\text{argmax}} \,\,\,\mathring{\mathbf{x}}_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Our aim in this Section is - instead of tuning our each classifier's weights one-by-one and then combining them in this way - to <em>learn all sets of weights simultaneously so as to satisfy this ideal condition as often as possible</em>.  Note that for now we will ignore the the beneift of <em>normalizing</em> each set of weights $\mathbf{w}_j$, since as discussed in Section 7.1.6 this is often ignored in practice.  We will however re-introduce the concept in Section 7.2.2 below.</p>
+<p>Our aim in this Section is - instead of tuning our each classifier's weights one-by-one and then combining them in this way - to <em>learn all sets of weights simultaneously so as to satisfy this ideal condition as often as possible</em>.  Note that for now we will ignore the the beneift of <em>normalizing</em> each set of weights $\mathbf{w}_j$, since as discussed in the prior Section this is often ignored in practice.  We will however re-introduce the concept in Section below.</p>
 </div>
 </div>
 </div>
@@ -13287,7 +13287,7 @@ g_p\left(\mathbf{w}_0,...,\mathbf{w}_{C-1}\right) = \left(\underset{c \,=\, 0,..
 <p>If our weights are set ideally this value should be zero for as many points as possible - i.e., so that the weights $\mathbf{w}_{y_p}^{\,}$ have been tuned correctly so that indeed the $y_p^{th}$ classifier provides the largest evaluation of $\mathbf{x}_p$. With this in mind, we can then easily form a cost function by taking the <em>average</em> of the pointwise cost above as $\frac{1}{P}\sum_{p = 1}^P g_p$ or equivalently</p>
 \begin{equation}
 g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_{p = 1}^P \left[ \left(\underset{c \,=\, 0,...,C-1}{\text{max}} \,\,\,\mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_c^{\,}\right) - \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_{y_p}^{\,}\right]
-\end{equation}<p>This <em>multi-class Perceptron</em> cost function is nonnegative and - when weights are tuned correctly - is as small as possible.  Thus we can stop <em>assuming</em> that we have ideal weights, and minimize this cost in order to find them.  Note here that unlike the OvA - detailed in the previous Section - here we tune all weights <em>simultaneously</em> in order to recover weights that satisfy the fusion rule in equation (1) as well as possible.  Like its two class analog (see Section 6.4.1) - the multi-class Perceptron is also <em>convex</em> regardless of the dataset employed (also see this Chapter's exercises for further details).  It also has a <em>trivial solution at zero</em>, that is when $\mathbf{w}_c = \mathbf{0}$ for all $c$ the cost is minimal which is to be avoided (which is often achievable by initializing any local optimization scheme used to minimize it away from the origin).</p>
+\end{equation}<p>This <em>multi-class Perceptron</em> cost function is nonnegative and - when weights are tuned correctly - is as small as possible.  Thus we can stop <em>assuming</em> that we have ideal weights, and minimize this cost in order to find them.  Note here that unlike the OvA - detailed in the previous Section - here we tune all weights <em>simultaneously</em> in order to recover weights that satisfy the fusion rule in equation (1) as well as possible.  Like its two class analog (see <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>) - the multi-class Perceptron is also <em>convex</em> regardless of the dataset employed (also see this Chapter's exercises for further details).  It also has a <em>trivial solution at zero</em>, that is when $\mathbf{w}_c = \mathbf{0}$ for all $c$ the cost is minimal which is to be avoided (which is often achievable by initializing any local optimization scheme used to minimize it away from the origin).</p>
 </div>
 </div>
 </div>
@@ -13301,7 +13301,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We call this the <em>multi-class Perceptron cost</em> not only because we have derived it by studying the problem of multi-class classification 'from above' as we did in Section 6.4, but also due to the fact that it can be easily shown to be a direct generalization of the two class version introduced in Section 6.4.1.  One easy way to see this is rewrite it - in order to make its appearence more akin to its two class analog - by combining the two terms in each summand using the following simple property of the $\text{max}$ function</p>
+<p>We call this the <em>multi-class Perceptron cost</em> not only because we have derived it by studying the problem of multi-class classification 'from above' as we did in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>, but also due to the fact that it can be easily shown to be a direct generalization of the two class version introduced in Section 6.4.1.  One easy way to see this is rewrite it - in order to make its appearence more akin to its two class analog - by combining the two terms in each summand using the following simple property of the $\text{max}$ function</p>
 \begin{equation}
 {\text{max}} \left(s_0,\,s_1,...,s_{C-1}\right) - z = {\text{max}} \left(s_0 - z,\,s_1 - z,...,s_{C-1} - z\right)
 \end{equation}<p>where $s_0,\,s_1,...,s_{C-1}$ and $z$ are scalar values.  Using this we can combine both terms in the $p^{th}$ summand andre-write the multi-class Perceptron in equation (4) cost function as follows</p>
@@ -13350,7 +13350,7 @@ w_{N,c}
 \underset{b_{0}^{\,},\,\boldsymbol{\omega}_{0}^{\,},\,...,\,b_{C-1}^{\,},\,\boldsymbol{\omega}_{C-1}^{\,}}{\,\,\,\,\,\,\,\,\,\,\,\,\mbox{minimize}\,\,\,} &amp; \,\,\,\,  \frac{1}{P}\sum_{p = 1}^P \left[\left(\underset{c \,=\, 0,...,C-1}{\text{max}} \,\,\,b_{c}^{\,} + \mathbf{x}_{p}^T\boldsymbol{\omega}_{c}^{\,}\right) - \left(b_{y_p}^{\,} + \mathbf{x}_{p}^T\boldsymbol{\omega}_{y_p}^{\,}\right)\right]\\
 \mbox{subject to}\,\,\, &amp; \,\,\,\,\, \left \Vert \boldsymbol{\omega}_{c}^{\,} \right \Vert_2^2  = 1, \,\,\,\,\,\, c \,=\, 0,...,C-1
 \end{aligned}
-\end{equation}<p>This is a proper cost function for <em>determining</em> proper weights for our $C$ classifiers: it is always nonnegative, we want to find weights so that its value is small, and it is precisely zero when all training points are classified correctly.  We can solve such problems directly in a variety of ways - e.g., by using projected gradient descent - but it is more commonplace to see this problem approximately solved by <em>relaxing the constraints</em> (as we have seen done many times before, e.g., in Sections 6.3.4 and 6.4.3).</p>
+\end{equation}<p>This is a proper cost function for <em>determining</em> proper weights for our $C$ classifiers: it is always nonnegative, we want to find weights so that its value is small, and it is precisely zero when all training points are classified correctly.  We can solve such problems directly in a variety of ways - e.g., by using projected gradient descent - but it is more commonplace to see this problem approximately solved by <em>relaxing the constraints</em> (as we have seen done many times before, e.g., in Sections <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">6.4.3</a> and <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_5_SVMs.html">6.5.3</a>).</p>
 </div>
 </div>
 </div>
@@ -13381,7 +13381,7 @@ w_{N,c}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To take advantage of the <code>numpy</code> libraries fast array operations we use the notation first initroduced in Section 5.5.3, and repeated in the previous Section, we stack the trained weights from our $C$ classifiers together into a single $\left(N + 1\right) \times C$ array of the form</p>
+<p>To take advantage of the <code>numpy</code> libraries fast array operations we use the notation first initroduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6.3</a>, and repeated in the previous Section, we stack the trained weights from our $C$ classifiers together into a single $\left(N + 1\right) \times C$ array of the form</p>
 \begin{equation}
 \mathbf{W}=\begin{bmatrix} 
 w_{0,0}  &amp;  w_{0,1}  &amp;  w_{0,2}  &amp; \cdots   &amp;  w_{0,C-1}  \\
@@ -13413,7 +13413,7 @@ w_{N,0}  &amp;  w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note: not only is this the <em>same</em> linear model used in multi-output regression (as detailed in Section 5.5), but the above is a $1\times C$ array of our linear models that can be evaluated at any $\mathbf{W}$.  We can now use precisely the same <code>model</code> implementation we have seen in Section 5.5.3, which we repeat below.</p>
+<p>Note: not only is this the <em>same</em> linear model used in multi-output regression (as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>), but the above is a $1\times C$ array of our linear models that can be evaluated at any $\mathbf{W}$.  We can now use precisely the same <code>model</code> implementation we have seen in Section 5.6.3, which we repeat below.</p>
 </div>
 </div>
 </div>
@@ -13495,7 +13495,7 @@ y = \underset{c \,=\, 0,...,C-1} {\text{max}}\,\text{model}\left(\mathbf{x},\mat
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>Python</code> code often runs much faster when <code>for</code> loops - or equivalently <code>list comprehensions</code> - are written equivalently using matrix-vector <code>numpy</code> operations (this has been a constant theme in our implementations since linear regression in Section 5.1).  This often leads to more compact <code>Python</code> code as well, since <code>for</code> loop operations are often more compactly written (even mathematically) as a matrix-vector operations.</p>
+<p><code>Python</code> code often runs much faster when <code>for</code> loops - or equivalently <code>list comprehensions</code> - are written equivalently using matrix-vector <code>numpy</code> operations (this has been a constant theme in our implementations since linear regression in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_2_Least.html">Section 5.2</a>).  This often leads to more compact <code>Python</code> code as well, since <code>for</code> loop operations are often more compactly written (even mathematically) as a matrix-vector operations.</p>
 </div>
 </div>
 </div>
@@ -13558,10 +13558,10 @@ y = \underset{c \,=\, 0,...,C-1} {\text{max}}\,\text{model}\left(\mathbf{x},\mat
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="3ced3a33-643b-474d-8780-ca0e13f36606"></div>
+<div id="ded1658f-af3c-48ba-98d3-5bb661732a14"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#3ced3a33-643b-474d-8780-ca0e13f36606');
+var element = $('#ded1658f-af3c-48ba-98d3-5bb661732a14');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14360,10 +14360,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="66e3d330-5fcd-42f0-b18d-73c297fd1ebd"></div>
+<div id="808a5417-46d3-43d5-a97c-b275f0c3635b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#66e3d330-5fcd-42f0-b18d-73c297fd1ebd');
+var element = $('#808a5417-46d3-43d5-a97c-b275f0c3635b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15153,7 +15153,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As we saw previously with the case of the two class perceptron in Section 6.4, we are often willing to sacrifice a small amount of modeling precision - forming a closely matching smoother cost function to the one we already have - in order to make optimization easier or expand the optimization tools we can bring to bear.  As was the case with the two class perceptron, here too we can <em>smooth</em> the multi-class Perceptron cost employing the <em>softmax</em> function.  Recall from our discussion of the two class perceptron in Section 6.4.2 that the <em>softmax function</em></p>
+<p>As we saw previously with the case of the two class perceptron in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4</a>, we are often willing to sacrifice a small amount of modeling precision - forming a closely matching smoother cost function to the one we already have - in order to make optimization easier or expand the optimization tools we can bring to bear.  As was the case with the two class perceptron, here too we can <em>smooth</em> the multi-class Perceptron cost employing the <em>softmax</em> function.  Recall from our discussion of the two class perceptron in Section 6.4.2 that the <em>softmax function</em></p>
 \begin{equation}
 \text{soft}\left(s_0,s_1,...,s_{C-1}\right) = \text{log}\left(e^{s_0} + e^{s_1} + \cdots + e^{s_{C-1}} \right)
 \end{equation}<p>is a close and smooth approximation to the maximum of $C$ scalar numbers $s_{0},...,s_{C-1}$, i.e.,</p>
@@ -15196,7 +15196,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This cost function goes by <em>many</em> names in practice including: the <em>multi-class Softmax</em>, <em>Multiclass Cross Entropy</em>, <em>Softplus</em>, and <em>Multiclass Logistic</em> cost to name a few.  We however will use two fundamental names to refer to it in general.  The first is <em>Multiclass Softmax</em>, which we use both because it is a softmax-smoothed version of the Multiclass Perceptron and because it is the natural generalization of the two class version seen in e.g., Section 6.4.3.  To see this more easily let us smooth the formulation of the Multiclass Perceptron given in equation (6), replacing the $\text{max}$ with the $\text{softmax}$ approximation, giving an equivalent but different formulation than the one above</p>
+<p>This cost function goes by <em>many</em> names in practice including: the <em>multi-class Softmax</em>, <em>Multiclass Cross Entropy</em>, <em>Softplus</em>, and <em>Multiclass Logistic</em> cost to name a few.  We however will use two fundamental names to refer to it in general.  The first is <em>Multiclass Softmax</em>, which we use both because it is a softmax-smoothed version of the Multiclass Perceptron and because it is the natural generalization of the two class version seen in e.g., <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_4_Perceptron.html">Section 6.4.3</a>.  To see this more easily let us smooth the formulation of the Multiclass Perceptron given in equation (6), replacing the $\text{max}$ with the $\text{softmax}$ approximation, giving an equivalent but different formulation than the one above</p>
 \begin{equation}
 g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_{p = 1}^P  \text{log}\left(1 + \sum_{\underset{j \neq y_p}{c = 0}}^{C-1}  e^{ \mathring{\mathbf{x}}_{p}^T \left(\overset{\,}{\mathbf{w}}_c^{\,} - \overset{\,}{\mathbf{w}}_{y_p}^{\,}\right)}  \right).
 \end{equation}<p>Visually this appears more similar to the two class Softmax cost, and indeed does reduce to it when $C = 2$ (and $y_p \in \left\{-1,+1\right\}$ are chosen).</p>
@@ -15206,7 +15206,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We will also refer to this function as the <em>multi-class Cross Entropy</em> cost because it is - likewise - a natrual generalization of the two class version seen in Section 6.1.  To see that this indeed the case we can again re-express the Softmax cost in equation (16) in an equivalent but different way.  To do this note that we take its $p^{th}$ summand and rewrite it using the fact that $\text{log}\left(e^{s}\right) = s$ as</p>
+<p>We will also refer to this function as the <em>multi-class Cross Entropy</em> cost because it is - likewise - a natrual generalization of the two class version seen in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a>.  To see that this indeed the case we can again re-express the Softmax cost in equation (16) in an equivalent but different way.  To do this note that we take its $p^{th}$ summand and rewrite it using the fact that $\text{log}\left(e^{s}\right) = s$ as</p>
 \begin{equation}
 \text{log}\left( \sum_{c = 0}^{C-1}  e^{ \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_c^{\,}}  \right) - \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_{y_p}^{\,} = \text{log}\left( \sum_{c = 0}^{C-1}  e^{ \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_c^{\,}}  \right) - \text{log}\,e^{\mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_{y_p}^{\,}}.
 \end{equation}
@@ -15273,7 +15273,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = -\frac{1}{P}\sum
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As with the multi-class Percpetron (see Section 7.2.2), it is common to <em>regularize</em> the Multiclass Softmax via its feature touching weights as</p>
+<p>As with the multi-class Percpetron, it is common to <em>regularize</em> the Multiclass Softmax via its feature touching weights as</p>
 \begin{equation}
 \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum_{c = 0}^{C-1}  e^{ b_{c}^{\,} + \mathbf{x}_{p}^T\boldsymbol{\omega}_{c}^{\,} }  \right) - \left(b_{y_p}^{\,} + \mathbf{x}_{p}^T\boldsymbol{\omega}_{y_p}^{\,}\right)\right] + \lambda \sum_{c = 0}^{C-1} \left \Vert \boldsymbol{\omega}_{c}^{\,} \right \Vert_2^2 
 \end{equation}
@@ -15283,7 +15283,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = -\frac{1}{P}\sum
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>where $\lambda \geq 0$ is typically set to a small value like e.g., $10^{-3}$.  In addition to this being more formally appropriate - given that our cost funtions originate with the fusion rule established in the previous Section - this can also be interpreted via Section 6.4.4 as a way of preventing local optimization methods like Newton's method (which take large steps) from diverging when dealing with perfectly seperable data.</p>
+<p>where $\lambda \geq 0$ is typically set to a small value like e.g., $10^{-3}$.  In addition to this being more formally appropriate - given that our cost funtions originate with the fusion rule established in the previous Section - this can also be interpreted as a way of preventing local optimization methods like Newton's method (which take large steps) from diverging when dealing with perfectly seperable data.</p>
 </div>
 </div>
 </div>
@@ -15297,7 +15297,7 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = -\frac{1}{P}\sum
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can implement the multi-class Softmax cost very similar to how the Multiclass Perceptron was implemented in Section 7.2.3.  That is, using the compact model notation introduced there</p>
+<p>We can implement the multi-class Softmax cost very similar to how the Multiclass Perceptron was implemented above.  That is, using the compact model notation introduced there</p>
 </div>
 </div>
 </div>
@@ -15420,10 +15420,10 @@ g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = -\frac{1}{P}\sum
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="85e8728f-8a94-4784-8159-4b36a4f06b07"></div>
+<div id="883978c3-50a7-466d-97d5-900ca5f7d414"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#85e8728f-8a94-4784-8159-4b36a4f06b07');
+var element = $('#883978c3-50a7-466d-97d5-900ca5f7d414');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16228,10 +16228,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="8d7f4b0a-2813-4550-aa2b-9146f7f6abcb"></div>
+<div id="0b025d7f-5b6a-4451-b06b-f49cd6c79da0"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#8d7f4b0a-2813-4550-aa2b-9146f7f6abcb');
+var element = $('#0b025d7f-5b6a-4451-b06b-f49cd6c79da0');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17036,10 +17036,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="fc9df49c-b08c-44be-8521-a7139e226de2"></div>
+<div id="218cb302-7a47-4989-9714-6996dc2af581"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#fc9df49c-b08c-44be-8521-a7139e226de2');
+var element = $('#218cb302-7a47-4989-9714-6996dc2af581');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17837,10 +17837,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="7e5f9f37-a8f6-4d92-b21c-94c819aab78a"></div>
+<div id="072dd0cc-5aea-4a94-8afe-05f4d5cfbb99"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7e5f9f37-a8f6-4d92-b21c-94c819aab78a');
+var element = $('#072dd0cc-5aea-4a94-8afe-05f4d5cfbb99');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

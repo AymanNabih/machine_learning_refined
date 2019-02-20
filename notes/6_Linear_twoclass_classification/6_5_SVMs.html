@@ -13436,7 +13436,7 @@ g\left(\mathbf{w}\right)=\underset{p=1}{\overset{P}{\sum}}\text{log}\left( 1 + e
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In our venture to recvoer the maximum margin seperating hyperplane, it will be convenient to use our individual notation for the bias and feature-touching weights (used in e.g., Section 6.3.4)</p>
+<p>In our venture to recvoer the maximum margin seperating hyperplane, it will be convenient to use our individual notation for the bias and feature-touching weights (used in e.g., <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a>)</p>
 \begin{equation}
 \text{(bias):}\,\, b = w_0 \,\,\,\,\,\,\,\, \text{(feature-touching weights):} \,\,\,\,\,\, \boldsymbol{\omega} = 
 \begin{bmatrix}
@@ -13534,7 +13534,7 @@ g\left(b,\boldsymbol{\omega}\right)=\underset{p=1}{\overset{P}{\sum}}\text{max}\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>to be minimized. Here the parameter $\lambda\geq0$ is called a penalty or regularization parameter (we have seen the notion of regularization previously in e.g., Section 9.1.7).  When $\lambda$ is set to a small positive value we put more 'pressure' on the cost function to make sure the constraints</p>
+<p>to be minimized. Here the parameter $\lambda\geq0$ is called a penalty or regularization parameter (we have seen the notion of regularization in the previous Section as well).  When $\lambda$ is set to a small positive value we put more 'pressure' on the cost function to make sure the constraints</p>
 \begin{equation}
 \text{max}\left(0,\,1-y_{p}^{\,}\left(b+\mathbf{x}_{p}^{T}\boldsymbol{\omega}\right) \right)=0,\,\,\,\,p=1,...,P
 \end{equation}<p>indeed hold, and (in theory) when $\lambda$ is made very small the formulation above matches the original constrained form.  Because of this $\lambda$ is often set to be quite small in practice.</p>
@@ -13573,10 +13573,10 @@ g\left(b,\boldsymbol{\omega}\right)=\underset{p=1}{\overset{P}{\sum}}\text{max}\
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="0b926018-b028-4e90-913a-56672c3169b0"></div>
+<div id="4af1ee37-7b63-4c34-a02a-6da25cb12182"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#0b926018-b028-4e90-913a-56672c3169b0');
+var element = $('#4af1ee37-7b63-4c34-a02a-6da25cb12182');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14381,7 +14381,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To see why this could be the case notice what happens to our softmargin SVM problem if we <em>smooth</em> the Margin-Perceptron portion of the cost using the <em>softmax</em> (as detailed in Section 9.3.2).  This gives a smoothed out soft-margin SVM cost function of the form</p>
+<p>To see why this could be the case notice what happens to our softmargin SVM problem if we <em>smooth</em> the Margin-Perceptron portion of the cost using the <em>softmax</em> (as detailed previously).  This gives a smoothed out soft-margin SVM cost function of the form</p>
 \begin{equation}
 g\left(b,\boldsymbol{\omega}\right)=\underset{p=1}{\overset{P}{\sum}}\text{log}\left( 1 + e^{-y_{p}\left(b+\mathbf{x}_{p}^{T}\boldsymbol{\omega}\right)}\right) +  \lambda \left \Vert\boldsymbol{\omega}\right\Vert _{2}^{2} 
 \end{equation}
@@ -14391,7 +14391,7 @@ g\left(b,\boldsymbol{\omega}\right)=\underset{p=1}{\overset{P}{\sum}}\text{log}\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>which we can also identify as a regularized softmax perceptron or logistic regression (as detailed in Section 6.3.4).  Thus we can see that all three methods of linear two-class classification we have seen are very deeply connected, and why they tend to provide similar results on realistic (not linearly separabble) datasets.</p>
+<p>which we can also identify as a regularized softmax perceptron or logistic regression.  Thus we can see that all three methods of linear two-class classification we have seen are very deeply connected, and why they tend to provide similar results on realistic (not linearly separabble) datasets.</p>
 </div>
 </div>
 </div>

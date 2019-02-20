@@ -13153,7 +13153,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As described in Section 3.11, stochastic and mini-batch learning can drastically accelerate (particularly first order) local optimization algorithms.  Having completed our description of <em>linear</em> supervised learning techniques - that is regression, two-class, and multi-class classification - in this Section we look back and provide a new <em>online learning</em> perspective of the stochastic / mini-batch learning approaches.</p>
+<p>As described in <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_11_Minibatch.html">Section 3.11</a>, stochastic and mini-batch learning can drastically accelerate (particularly first order) local optimization algorithms.  Having completed our description of <em>linear</em> supervised learning techniques - that is regression, two-class, and multi-class classification - in this Section we look back and provide a new <em>online learning</em> perspective of the stochastic / mini-batch learning approaches.</p>
 
 </div>
 </div>
@@ -13207,11 +13207,11 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Section 3.10 we discussed the concept of stochastic - and more generally mini-batch - extensions of (particular first order) local optimization algorithms in order to accelerate the minimization of cost functions that consist of $P$ terms of the form</p>
+<p>In <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_11_Minibatch.html">Section 3.11</a> we discussed the concept of stochastic - and more generally mini-batch - extensions of (particular first order) local optimization algorithms in order to accelerate the minimization of cost functions that consist of $P$ terms of the form</p>
 \begin{equation}
 g\left(\mathbf{w}\right) = \sum_{p=1}^P g_p\left(\mathbf{w}\right)
-\end{equation}<p>where $g_1\,g_2,\,...,g_P$ are all functions of the same kind.  Looking backwards, in this Chapter as well as the two that proceeded it, absolutely <em>every cost function took this form</em>.  That is, every machine learning cost function for regression, two-class, and multi-class classification takes the general form above, and thus we can think about applying mini-batch optimization in tuning their parameters (this trend will continue as we move forward as well, e.g., when discussing the <em>autoencoder</em> in Section 8.3).</p>
-<p>For example, the Multiclass Softmax cost introduced in Section 7.2.5</p>
+\end{equation}<p>where $g_1\,g_2,\,...,g_P$ are all functions of the same kind.  Looking backwards, in this Chapter as well as the two that proceeded it, absolutely <em>every cost function took this form</em>.  That is, every machine learning cost function for regression, two-class, and multi-class classification takes the general form above, and thus we can think about applying mini-batch optimization in tuning their parameters (this trend will continue as we move forward as well, e.g., when discussing the <em>autoencoder</em> in <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_4_Autoencoder.html">Section 8.4</a>).</p>
+<p>For example, the Multiclass Softmax cost introduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/7_Linear_multiclass_classification/7_3_Perceptron.html">Section 7.3.5</a></p>
 \begin{equation}
 g\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) = \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum_{c = 0}^{C-1}  e^{ \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_c^{\,}}  \right) - \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_{y_p}^{\,}\right].
 \end{equation}<p>takes this general form where</p>
@@ -13224,7 +13224,7 @@ g_p\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) =\text{log}\left
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In other words, <em>machine learning cost functions de-compose over their training data</em> where the summand $g_p$ measures the error of the cost on the $p^{th}$ training point.  As detailed in Section 3.10, the heart of the mini-batch idea is to minimize such a cost <em>sequentially</em> over small mini-batches of these summands, one mini-batch of summands at a time, as opposed to the standard local optimization step where minimize in the entire set of summands at once.  Now, since machine learning cost summands are inherently tied to training datapoints, in the context of machine learning we can think about mini-batch optimization <em>equivalently in terms of mini-batches of training data</em> as well.  Thus as opposed to a standard (also called full batch) local optimization technique that takes individual steps by sweeping through an <em>entire</em> set of training data <em>simultaneously</em>, the mini-batch approach has us take smaller steps sweeping through training data <em>sequentially</em> (with one complete sweep through the data being referred to as an <em>epoch</em> of mini-batch learning).  This machine learning / data driven interpretation is illustrated schematically in the Figure below.</p>
+<p>In other words, <em>machine learning cost functions de-compose over their training data</em> where the summand $g_p$ measures the error of the cost on the $p^{th}$ training point.  As detailed in Section 3.11, the heart of the mini-batch idea is to minimize such a cost <em>sequentially</em> over small mini-batches of these summands, one mini-batch of summands at a time, as opposed to the standard local optimization step where minimize in the entire set of summands at once.  Now, since machine learning cost summands are inherently tied to training datapoints, in the context of machine learning we can think about mini-batch optimization <em>equivalently in terms of mini-batches of training data</em> as well.  Thus as opposed to a standard (also called full batch) local optimization technique that takes individual steps by sweeping through an <em>entire</em> set of training data <em>simultaneously</em>, the mini-batch approach has us take smaller steps sweeping through training data <em>sequentially</em> (with one complete sweep through the data being referred to as an <em>epoch</em> of mini-batch learning).  This machine learning / data driven interpretation is illustrated schematically in the Figure below.</p>
 
 </div>
 </div>
@@ -13354,10 +13354,10 @@ g_p\left(\mathbf{w}_{0}^{\,},\,...,\mathbf{w}_{C-1}^{\,}\right) =\text{log}\left
 
 
 
-<div id="11777ffa-d25b-437f-8095-5ab8a64a125d"></div>
+<div id="0743e751-1811-4d43-a1ab-06ed04ed5ed6"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#11777ffa-d25b-437f-8095-5ab8a64a125d');
+var element = $('#0743e751-1811-4d43-a1ab-06ed04ed5ed6');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

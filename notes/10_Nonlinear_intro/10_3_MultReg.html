@@ -13199,7 +13199,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this Section we present a description of nonlinear feature engineering for multi-ouput regression first introduced Section 5.5.  This mirrors what we have seen in the previous Section completely with one small but important difference: in the multi-output case we can choose to model each regression <em>separately</em>, employing one nonlinear model for output, <em>or jointly</em>, producing a single nonlinear model for all outputs simultaneously.</p>
+<p>In this Section we present a description of nonlinear feature engineering for multi-ouput regression first introduced <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>.  This mirrors what we have seen in the previous Section completely with one small but important difference: in the multi-output case we can choose to model each regression <em>separately</em>, employing one nonlinear model for output, <em>or jointly</em>, producing a single nonlinear model for all outputs simultaneously.</p>
 </div>
 </div>
 </div>
@@ -13207,34 +13207,7 @@ div#notebook {
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import gridworld library - make sure this is executed prior to running any gridworld cell</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'../../'</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">mlrefined_libraries</span> <span class="k">import</span> <span class="n">nonlinear_superlearn_library</span> <span class="k">as</span> <span class="n">optlib</span>
-<span class="kn">from</span> <span class="nn">mlrefined_libraries</span> <span class="k">import</span> <span class="n">superlearn_library</span> <span class="k">as</span> <span class="n">superlearn</span>
-<span class="kn">from</span> <span class="nn">mlrefined_libraries</span> <span class="k">import</span> <span class="n">math_optimization_library</span> <span class="k">as</span> <span class="n">optlib</span>
-<span class="n">datapath</span> <span class="o">=</span> <span class="s1">'../../mlrefined_datasets/nonlinear_superlearn_datasets/'</span>
-<span class="n">optimizers</span> <span class="o">=</span> <span class="n">optlib</span><span class="o">.</span><span class="n">optimizers</span>
-<span class="n">static_plotter</span> <span class="o">=</span> <span class="n">optlib</span><span class="o">.</span><span class="n">static_plotter</span><span class="o">.</span><span class="n">Visualizer</span><span class="p">()</span>
 
-<span class="c1"># demos for this notebook</span>
-<span class="n">plotter</span> <span class="o">=</span> <span class="n">superlearn</span><span class="o">.</span><span class="n">multi_outupt_plotters</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">axes3d</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># this is needed to compensate for %matplotlib notebook's tendancy to blow up images when plotted inline</span>
-<span class="o">%</span><span class="k">matplotlib</span> notebook
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">rcParams</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">'figure.autolayout'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -13248,7 +13221,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Recall that when dealing withi mulit-output regression (introduced in Section 5.5) we have $N$ dimensional input / $C$ dimensional output pairs $\left(\mathbf{x}_p,\,\mathbf{y}_p\right)$, and our joint linear model for all $C$ regressions (as detailed in Section 5.5.3) takes the form</p>
+<p>Recall that when dealing withi mulit-output regression (introduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>) we have $N$ dimensional input / $C$ dimensional output pairs $\left(\mathbf{x}_p,\,\mathbf{y}_p\right)$, and our joint linear model for all $C$ regressions takes the form</p>
 \begin{equation}
 \text{model}\left(\mathbf{x},\mathbf{W}\right) =
 \mathring{\mathbf{x}}^T\mathbf{W}^{\,}
@@ -13318,7 +13291,7 @@ Nonlineaer multi-output regression: we can either solve each regression problem 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Employing the same compact notation for our feature transformations introduced in Section 10.1.2 we can express each of these models more compactly as</p>
+<p>Employing the same compact notation for our feature transformations introduced in Section <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">10.2.2</a> we can express each of these models more compactly as</p>
 \begin{equation}
 \text{model}_c\left(\mathbf{x},\Theta_c\right) = \mathring{\mathbf{f}}_{\,}^T \mathbf{w}_c.
 \end{equation}
@@ -13408,10 +13381,10 @@ w_{N,0}  &amp;  w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="e307e2d2-071b-4d78-8cf7-abbd39b01403"></div>
+<div id="a869c576-b3e3-45e8-8894-d15f29bf102a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#e307e2d2-071b-4d78-8cf7-abbd39b01403');
+var element = $('#a869c576-b3e3-45e8-8894-d15f29bf102a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14223,10 +14196,10 @@ f_2\left(\mathbf{x}\right) = \text{sin}\left(w_{2,0} + w_{2,1}x_1 + w_{2,2}x_2\r
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="dc329391-08c5-4713-bfaf-e05d5b5ab0e5"></div>
+<div id="bf6ad773-4ad0-4d11-9f17-8ae8b2275ce5"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#dc329391-08c5-4713-bfaf-e05d5b5ab0e5');
+var element = $('#bf6ad773-4ad0-4d11-9f17-8ae8b2275ce5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15016,7 +14989,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As with the linear case, detailed in Section 5.5.3, here likewise we can piggy-back on our general <code>Pythonic</code> implementation of nonlinear regression introduced in Section 10.1.4 and employ precisely the same model and cost function implementation as used in the single-output case.  The only difference here is in how how we define our feature transformations and the dimension of our matrix of linear combination weights.</p>
+<p>As with the linear case, detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6.3</a>, here likewise we can piggy-back on our general <code>Pythonic</code> implementation of nonlinear regression introduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">Section 10.2.4</a> and employ precisely the same model and cost function implementation as used in the single-output case.  The only difference here is in how how we define our feature transformations and the dimension of our matrix of linear combination weights.</p>
 </div>
 </div>
 </div>

@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the previous Section we saw how <em>feature scaling</em> via <em>standard normalization</em> - i.e., by subtracting off the mean of each input feature and dividing off its standard deviation - significantly improves the topology of a machine learning cost function enabling much more rapid minimization via first order methods like e.g., the generic gradient descent algorithm.  In this Section we describe how PCA is used to perform a more advanced form of standard normalization - commonly called <em>PCA sphereing</em> (also commonly referred to as <em>whitening</em>).  With this improvement on standard normalization we use PCA to rotate the mean-centered dataset so that its largest orthogonal directions of variance allign with the coordinate axes prior to scaling each input by its standard deviation.  This typically allows us to better compactify the data, resulting in a cost function whose contours are even more 'circular' than that provided by standard normalization and thus makes cost functions even easier to optimize.</p>
+<p>In the <a href="https://jermwatt.github.io/machine_learning_refined/notes/9_Feature_engineer_select/9_3_Scaling.html">Section 9.3</a> we saw how <em>feature scaling</em> via <em>standard normalization</em> - i.e., by subtracting off the mean of each input feature and dividing off its standard deviation - significantly improves the topology of a machine learning cost function enabling much more rapid minimization via first order methods like e.g., the generic gradient descent algorithm.  In this Section we describe how PCA is used to perform a more advanced form of standard normalization - commonly called <em>PCA sphereing</em> (also commonly referred to as <em>whitening</em>).  With this improvement on standard normalization we use PCA to rotate the mean-centered dataset so that its largest orthogonal directions of variance allign with the coordinate axes prior to scaling each input by its standard deviation.  This typically allows us to better compactify the data, resulting in a cost function whose contours are even more 'circular' than that provided by standard normalization and thus makes cost functions even easier to optimize.</p>
 </div>
 </div>
 </div>
@@ -13245,7 +13245,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Using the same notation as in the previous Section we denote by $\mathbf{x}_p$ the $p^{th}$ input of $N$ dimensions belonging to some dataset of $P$ points.  By stacking these together column-wise we create our $N\times P$ data matrix $\mathbf{X}$.  We then denote $\frac{1}{P}\mathbf{X}\mathbf{X}^T + \lambda \mathbf{I}_{N\times N}$ the regularized covariance matrix of this data and $\frac{1}{P}\mathbf{X}^{\,} \mathbf{X}^T +\lambda \mathbf{I}_{N\times N}= \mathbf{V}^{\,}\mathbf{D}^{\,}\mathbf{V}^T$ its eigenvalue/vector decomposition (see Section 8.4).</p>
+<p>Using the same notation as <a href="https://jermwatt.github.io/machine_learning_refined/notes/9_Feature_engineer_select/9_3_Scaling.html">Section 9.3</a> we denote by $\mathbf{x}_p$ the $p^{th}$ input of $N$ dimensions belonging to some dataset of $P$ points.  By stacking these together column-wise we create our $N\times P$ data matrix $\mathbf{X}$.  We then denote $\frac{1}{P}\mathbf{X}\mathbf{X}^T + \lambda \mathbf{I}_{N\times N}$ the regularized covariance matrix of this data and $\frac{1}{P}\mathbf{X}^{\,} \mathbf{X}^T +\lambda \mathbf{I}_{N\times N}= \mathbf{V}^{\,}\mathbf{D}^{\,}\mathbf{V}^T$ its eigenvalue/vector decomposition (see <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_5_Classic.html">Section 8.5</a>).</p>
 <p>Now remember that when performing PCA we first <em>mean-center</em> our dataset (see Section 8.2) - that is we subtract off the mean of each coordinate (note how this is the first step in the standard normalization scheme as well).  We then aim to represent each of our mean-centered datapoints 
 datapoint $\mathbf{x}_p$ by $\mathbf{w}_p = \mathbf{V}_{\,}^T\mathbf{x}_p^{\,}$.  In the space spanned by the principal components we can represent the entire set of transformed mean-centered data as</p>
 \begin{equation}
@@ -13345,7 +13345,7 @@ datapoint $\mathbf{x}_p$ by $\mathbf{w}_p = \mathbf{V}_{\,}^T\mathbf{x}_p^{\,}$.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, if we so choose we can express steps 2 and 3 of PCA-sphereing in a more mathematically elegant way using the <em>eigenvalues</em> of the regularized covariance matrix.  The Raleigh quotient definition (see e.g., the previous Section) of the $n^{th}$ eigenvalue $d_n$ of this matrix states that numerically speaking</p>
+<p>Now, if we so choose we can express steps 2 and 3 of PCA-sphereing in a more mathematically elegant way using the <em>eigenvalues</em> of the regularized covariance matrix.  The Raleigh quotient definition of the $n^{th}$ eigenvalue $d_n$ of this matrix states that numerically speaking</p>
 \begin{equation}
 d_n = \frac{1}{P}\mathbf{v}_n \mathbf{X}_{\,}^{\,} \mathbf{X}_{\,}^T \mathbf{v}_n 
 \end{equation}<p>where $\mathbf{v}_n$ is the $n^{th}$ and corresponding eigenvector.  Now in terms of our PCA transformed data this is equivalently written as</p>
@@ -13398,7 +13398,7 @@ d_n = \frac{1}{P}\left\Vert \mathbf{v}_n^T \mathbf{X} \right \Vert_2^2 = {\frac{
 <p>Also notice that in writing the method this way we can see how - unlike the standard normalization scheme - in performing PCA sphereing we do truly 'sphere' the data in that</p>
 \begin{equation}
  \frac{1}{P}\mathbf{S}^{\,}\mathbf{S}^T = \mathbf{I}_{N\times N}
-\end{equation}<p>which can be easily shown by simply plugging in the definition of $\mathbf{S}$ and simplifying.  This implies that the contours of any cost function we have seen thus far tend to be highly <em>spherical</em>, e.g., in the case of a quadratic like Least Squares for linear regression are perfectly spherical (see the analysis in Section 8.4.3 for further details), and thus will be much easier to optimize.</p>
+\end{equation}<p>which can be easily shown by simply plugging in the definition of $\mathbf{S}$ and simplifying.  This implies that the contours of any cost function we have seen thus far tend to be highly <em>spherical</em>, e.g., in the case of a quadratic like Least Squares for linear regression are perfectly spherical, and thus will be much easier to optimize.</p>
 </div>
 </div>
 </div>

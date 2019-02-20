@@ -13248,7 +13248,7 @@ div#notebook {
 <p>While we employed a <em>linear</em> model in deriving linear two-class classification in Chapter 6, this linearity was simply an <em>assumption</em> about the sort of boundary that (in general) largely distinguishe two classes of data.  Our assumption of a linear boundary translates precisely to the linear model</p>
 \begin{equation}
 \text{model}\left(\mathbf{x},\mathbf{w}\right) = \mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,} 
-\end{equation}<p>where here we use the same compact notation here as in e.g., Section 10.1.1.  Our linear decision boundary  - employing by default label values $y_p \in \left\{-1,+1\right\}$ - then lies precisely where this formula (for a fixed set of parameters) for input $\mathbf{x}$ where $\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}  = 0$ and label predictions are made (see Section 6.5) as</p>
+\end{equation}<p>where here we use the same compact notation here as in e.g., <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">Section 10.2.1</a>.  Our linear decision boundary  - employing by default label values $y_p \in \left\{-1,+1\right\}$ - then lies precisely where this formula (for a fixed set of parameters) for input $\mathbf{x}$ where $\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}  = 0$ and label predictions are made (see <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_3_Softmax.html">Section 6.3</a>) as</p>
 \begin{equation}
 y = \text{sign}\left(\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}\right).
 \end{equation}
@@ -13296,7 +13296,7 @@ y = \text{sign}\left(\mathring{\mathbf{f}}_{\,}^T \mathbf{w}\right).
 <img alt="" src="../../mlrefined_images/nonlinear_superlearn_images/10_3.png" width="85%"/>
 </p>
 <figcaption> <strong>Figure:</strong> <em> 
-(left) Linear two-class classification illustrated. Here the separating boundary is defined by $\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}=0$. (right) Nonlinear two-class classification is achieved by injecting nonlinear feature transformations into our model in precisely the same way we did in the previous Section with nonlinear regression. Here the separating boundary is a nonlinear curve defined by $\mathring{\mathbf{f}}_{\,}^T\mathbf{w}^{\,}=0$.
+(left) Linear two-class classification illustrated. Here the separating boundary is defined by $\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}=0$. (right) Nonlinear two-class classification is achieved by injecting nonlinear feature transformations into our model in precisely the same way we did in Section 10.2 with nonlinear regression. Here the separating boundary is a nonlinear curve defined by $\mathring{\mathbf{f}}_{\,}^T\mathbf{w}^{\,}=0$.
 
 </em>
 </figcaption>
@@ -13353,10 +13353,10 @@ y = \text{sign}\left(\mathring{\mathbf{f}}_{\,}^T \mathbf{w}\right).
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="9832673c-9fa6-4867-9081-504ec6c9140e"></div>
+<div id="d935526c-e812-4951-89a9-32ae6eb2f636"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#9832673c-9fa6-4867-9081-504ec6c9140e');
+var element = $('#d935526c-e812-4951-89a9-32ae6eb2f636');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14155,7 +14155,7 @@ f\left(x\right) = x
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below we perform a run of gradient descent to minimize the Softmax cost on this dataset - first performing standard normalization on the input as detailed in Section 9.2.  This means (as detailed in the previous Section as well) that we can actually think of the normalization as being a part of the feature transformation itself, and write it formally as</p>
+<p>Below we perform a run of gradient descent to minimize the Softmax cost on this dataset - first performing standard normalization on the input as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/9_Feature_engineer_select/9_3_Scaling.html">Section 9.3</a>.  This means (as detailed in the previous Section as well) that we can actually think of the normalization as being a part of the feature transformation itself, and write it formally as</p>
 \begin{equation}
 f\left(x \right) = \frac{x - \mu}{\sigma}
 \end{equation}<p>where $\mu$ and $\sigma$ are the mean and standard deviation of the dataset's input.</p>
@@ -14180,10 +14180,10 @@ f\left(x \right) = \frac{x - \mu}{\sigma}
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="410f5f99-d1e1-4058-8847-aebab8c90693"></div>
+<div id="decb0446-fca4-4f07-8284-1d085baf4c33"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#410f5f99-d1e1-4058-8847-aebab8c90693');
+var element = $('#decb0446-fca4-4f07-8284-1d085baf4c33');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14973,7 +14973,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In discussing classification through the lens of logistic regression in Section 6.2, we saw how linear classification can be thought of as a particular instance of nonlinear regression.  In particular how from this perspective we aim at fitting a curve (or surface in higher dimensions) that consists of a linear combination of our input shoved through the <code>tanh</code> function.  For $N=1$ dimensional input this regression looks like</p>
+<p>In discussing classification through the lens of logistic regression in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a>, we saw how linear classification can be thought of as a particular instance of nonlinear regression.  In particular how from this perspective we aim at fitting a curve (or surface in higher dimensions) that consists of a linear combination of our input shoved through the <code>tanh</code> function.  For $N=1$ dimensional input this regression looks like</p>
 \begin{equation}
 \text{tanh}\left(w_0^{\,} + {x}_p {w}_{1}^{\,}\right) \approx y_p.
 \end{equation}
@@ -15029,10 +15029,10 @@ A prototypical $N = 1$ dimensional input shown from the regression perspective (
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="fc4a3fb6-aae2-4fd2-b252-8a39da3eaea5"></div>
+<div id="86672c88-a0cb-4beb-b241-7ca5f8b846af"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#fc4a3fb6-aae2-4fd2-b252-8a39da3eaea5');
+var element = $('#86672c88-a0cb-4beb-b241-7ca5f8b846af');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15848,7 +15848,7 @@ An example dataset like the one we are currently looking to learn a classifier o
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We will then tune our parameters via applying gradient descent to minimize the Softmax cost, and to speed up its convergence we will apply <em>standard normalization</em> (as discussed in Section 9.2) to the input of the data.  With our weights tuned and our predictor trained we can then plot the resulting fit / separation.  In the left panel we show the original dataset - from the regression perspective-  along with the nonlinear fit provided by our nonlinear logistic regressor $\text{tanh}\left(\text{model}\left(x, \mathbf{w}\right)\right) = y$.  In the right panel we show the same dataset only in the transformed feature space defined by our two features.  Here a datapoint that originally had input $x_p$ now has input $\left(f_1\left(x_p\right)\,,(f_2\left(x_p\right)\right)$.  In this space the separation / decision boundary is <em>linear</em>.</p>
+<p>We will then tune our parameters via applying gradient descent to minimize the Softmax cost, and to speed up its convergence we will apply <em>standard normalization</em> (as discussed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/9_Feature_engineer_select/9_3_Scaling.html">Section 9.3</a>) to the input of the data.  With our weights tuned and our predictor trained we can then plot the resulting fit / separation.  In the left panel we show the original dataset - from the regression perspective-  along with the nonlinear fit provided by our nonlinear logistic regressor $\text{tanh}\left(\text{model}\left(x, \mathbf{w}\right)\right) = y$.  In the right panel we show the same dataset only in the transformed feature space defined by our two features.  Here a datapoint that originally had input $x_p$ now has input $\left(f_1\left(x_p\right)\,,(f_2\left(x_p\right)\right)$.  In this space the separation / decision boundary is <em>linear</em>.</p>
 </div>
 </div>
 </div>
@@ -15863,10 +15863,10 @@ An example dataset like the one we are currently looking to learn a classifier o
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="37c789cd-2918-4d80-b6a2-718181ace7d0"></div>
+<div id="deb8fd48-3206-4c8c-9c07-c66aba5dfaa2"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#37c789cd-2918-4d80-b6a2-718181ace7d0');
+var element = $('#deb8fd48-3206-4c8c-9c07-c66aba5dfaa2');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16685,10 +16685,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="eebf2da2-61bc-4cb6-af82-22f321a938a9"></div>
+<div id="dc246671-64b5-4c85-af6c-f2c6523fca0e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#eebf2da2-61bc-4cb6-af82-22f321a938a9');
+var element = $('#dc246671-64b5-4c85-af6c-f2c6523fca0e');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17503,10 +17503,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="a991f20b-3192-4c0c-8d53-1625e21ca1b7"></div>
+<div id="a06be8d9-a351-4e43-ad1e-e48ceaca20a5"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#a991f20b-3192-4c0c-8d53-1625e21ca1b7');
+var element = $('#a06be8d9-a351-4e43-ad1e-e48ceaca20a5');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -18296,7 +18296,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The general nonlinear model in equation (4) above can be implemented precisely as described in Section 10.1.4. since - indeed - it is the same general nonlinear model we use with nonlinear regression.  Therefore, just as with regression, the we need not alter the implementation of any two-class classification cost function introduced in Chapter 6 to perform nonlinear classification: all we need to do is properly define our nonlinear transformation(s) in <code>Python</code> (if we wish to use an automatic differentiator then these should be expressed using <code>autograd</code>'s <code>numpy</code> wrapper).</p>
+<p>The general nonlinear model in equation (4) above can be implemented precisely as described in <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">Section 10.2.4</a>. since - indeed - it is the same general nonlinear model we use with nonlinear regression.  Therefore, just as with regression, the we need not alter the implementation of any two-class classification cost function introduced in Chapter 6 to perform nonlinear classification: all we need to do is properly define our nonlinear transformation(s) in <code>Python</code> (if we wish to use an automatic differentiator then these should be expressed using <code>autograd</code>'s <code>numpy</code> wrapper).</p>
 </div>
 </div>
 </div>

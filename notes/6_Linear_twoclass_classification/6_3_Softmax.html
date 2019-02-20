@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the previous Section we saw how to derive logistic regression when employing label values $y_p \in \left\{0,+1\right\}$.  However as mentioned in Section 6.1.1 these label values are somewhat arbitrary, and one can just as easily derive logistic regression using label values $y_p \in \left\{-1,+1\right\}$.  In this Section we do just this, resulting in new cost function called the <em>Softmax cost</em> for logistic regression.  While the Softmax differs in form from the Cross Entropy cost, it is in fact equivalent to it (as we will show as well).  This means that - practically speaking - one can use either the Softmax or Cross Entropy in practice to achieve equivalent results.  However - in principle - the Softmax cost is far more valuable helps unify the diverse set of motivations for linear two-class classification (as we will see in the Sections that follow).</p>
+<p>In the previous Section we saw how to derive logistic regression when employing label values $y_p \in \left\{0,+1\right\}$.  However as mentioned in the previous Section these label values are somewhat arbitrary, and one can just as easily derive logistic regression using label values $y_p \in \left\{-1,+1\right\}$.  In this Section we do just this, resulting in new cost function called the <em>Softmax cost</em> for logistic regression.  While the Softmax differs in form from the Cross Entropy cost, it is in fact equivalent to it (as we will show as well).  This means that - practically speaking - one can use either the Softmax or Cross Entropy in practice to achieve equivalent results.  However - in principle - the Softmax cost is far more valuable helps unify the diverse set of motivations for linear two-class classification (as we will see in the Sections that follow).</p>
 </div>
 </div>
 </div>
@@ -13245,7 +13245,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If we change the label values from $y_{p}\in\left\{0,\,1\right\}$ to $y_{p}\in\left\{-1,\,+1\right\}$ much of the story we saw unfold in previously in Sections 6.1.1 - 6.1.3 unfolds here as well, with only slight differences.  That is, instead of our data ideally sitting on a step function (with linear boundary) with lower / upper steps taking on the values $0$ and $1$ respectively, they take on values $-1$ and $+1$ as shown below for prototypical cases where $N=1$ (left panel) and $N=2$ (right panel).</p>
+<p>If we change the label values from $y_{p}\in\left\{0,\,1\right\}$ to $y_{p}\in\left\{-1,\,+1\right\}$ much of the story we saw unfold in the previously Section unfolds here as well, with only slight differences.  That is, instead of our data ideally sitting on a step function (with linear boundary) with lower / upper steps taking on the values $0$ and $1$ respectively, they take on values $-1$ and $+1$ as shown below for prototypical cases where $N=1$ (left panel) and $N=2$ (right panel).</p>
 </div>
 </div>
 </div>
@@ -13287,7 +13287,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As with data using labels $0$ and $1$  (see Example 1 in Section 6.1.1), linear regression would in general provide poor performance for data of this sort.  Because we want to tune the weights of our model $\mathbf{w}$ so that our parameterized step function maps inputs to outputs correctly as</p>
+<p>As with data using labels $0$ and $1$  (see Example 1 in the previous Section), linear regression would in general provide poor performance for data of this sort.  Because we want to tune the weights of our model $\mathbf{w}$ so that our parameterized step function maps inputs to outputs correctly as</p>
 \begin{equation}
 \text{sign}\left(\mathring{\mathbf{x}}_{p}^{T}\mathbf{w}^{\,}\right) \approx y_p
 \end{equation}<p>we could employ a Least Squares cost function involving $\text{sign}\left(\cdot\right)$ directly as</p>
@@ -13314,7 +13314,7 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P \left(\text{sign}\left(\left(\mathring{\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We could - as we did in Section 6.1.3 - then look to replace the discrete $\text{sign}\left(\cdot\right)$ with a <em>smooth approximation</em>.   A slightly re-scaled version of the <em>sigmoid</em> function - so that its values range between $-1$ and $1$ instead of $0$ and $1$ - serves this purpose well.  This scaled version of the sigmoid is often called the <em>hyperbolic tangent function</em> and is written as</p>
+<p>We could - as we did in the previous Section - then look to replace the discrete $\text{sign}\left(\cdot\right)$ with a <em>smooth approximation</em>.   A slightly re-scaled version of the <em>sigmoid</em> function - so that its values range between $-1$ and $1$ instead of $0$ and $1$ - serves this purpose well.  This scaled version of the sigmoid is often called the <em>hyperbolic tangent function</em> and is written as</p>
 \begin{equation}
 \text{tanh}(x) = 2\,\sigma\left(x\right) - 1 = \frac{2}{1 + e^{-x}} - 1.
 \end{equation}<p>Given that the sigmoid function $\sigma\left(\cdot\right)$ ranges smoothly between $0$ and $1$, it is easy to see why $\text{tanh}\left(\cdot\right)$ as defined above ranges smoothly between $-1$ and $+1$.  In the figure below we plot the tanh function (left panel), as well as several internally weighted versions of it (right panel). As we can see in the figure, for the correct setting of internal weights the hyperbolic tangent function can be made to look arbitrarily similar to the sign function.</p>
@@ -13356,7 +13356,7 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P \left(\text{tanh}\left(\left(\mathring{\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However this Least Squares cost (visualized below) - like the one we saw in Section 6.1.3 - is non-convex and has large flat regions that can impair optimization progress.</p>
+<p>However this Least Squares cost (visualized below) - like the one we saw in the prior Section - is non-convex and has large flat regions that can impair optimization progress.</p>
 </div>
 </div>
 </div>
@@ -13392,10 +13392,10 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P \left(\text{tanh}\left(\left(\mathring{\
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="7d186439-d7ae-4619-a536-34350fc13efc"></div>
+<div id="a38a8e98-99ff-4f97-99ee-36d5c3ba0f5b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#7d186439-d7ae-4619-a536-34350fc13efc');
+var element = $('#a38a8e98-99ff-4f97-99ee-36d5c3ba0f5b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14185,7 +14185,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In complete analogy to the derivation of the cross-entropy cost in Section 6.1.4, because our labels are constrained to take on values $y_p \in \left\{-1,+1\right\}$ here we can also construct a new cost function based on a penalty that more harshly penalizes error.  In particular, note that if we rearrange the hyperbolic tangent function in equation (5) terms of the sigmoid we have</p>
+<p>In complete analogy to the derivation of the cross-entropy cost in the previous Section, because our labels are constrained to take on values $y_p \in \left\{-1,+1\right\}$ here we can also construct a new cost function based on a penalty that more harshly penalizes error.  In particular, note that if we rearrange the hyperbolic tangent function in equation (5) terms of the sigmoid we have</p>
 \begin{equation}
 \sigma\left(x\right) = \frac{\text{tanh}(x) + 1}{2}.
 \end{equation}
@@ -14209,7 +14209,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Because of this relationship we can employ <em>the same point-wise cost function</em> - first detailed in Section 6.1.4 - called the <em>Log Error</em> only our current label values</p>
+<p>Because of this relationship we can employ <em>the same point-wise cost function</em> - first detailed in the prior Section - called the <em>Log Error</em> only our current label values</p>
 </div>
 </div>
 </div>
@@ -14229,7 +14229,7 @@ g_{p}\left(\mathbf{w}\right)=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This point-wise cost function - as detailed previously in Section 6.1.4 - is always nonnegative, and harshly penalizes classification errors.  In short with <em>ideal</em> weights $\mathbf{w}$ when $y_p = +1$ then $\text{tanh}\left(\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}\right) \approx +1$ and the top condition gives $-\text{log}\left(\sigma\left( \mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,} \right)\right) \approx -\text{log}\left(1 \right) = 0$ and is very large otherwise.  Likewise when $y_p = -1$ with ideal weights $\text{tanh}\left(\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}\right) \approx -1$ and the bottom case is likewise approximately $-\text{log}\left(1 \right) = 0$ (and severely punishes errors).</p>
+<p>This point-wise cost function is always nonnegative, and harshly penalizes classification errors.  In short with <em>ideal</em> weights $\mathbf{w}$ when $y_p = +1$ then $\text{tanh}\left(\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}\right) \approx +1$ and the top condition gives $-\text{log}\left(\sigma\left( \mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,} \right)\right) \approx -\text{log}\left(1 \right) = 0$ and is very large otherwise.  Likewise when $y_p = -1$ with ideal weights $\text{tanh}\left(\mathring{\mathbf{x}}_{\,}^T\mathbf{w}^{\,}\right) \approx -1$ and the bottom case is likewise approximately $-\text{log}\left(1 \right) = 0$ (and severely punishes errors).</p>
 </div>
 </div>
 </div>
@@ -14327,7 +14327,7 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P g_p\left(\mathbf{w}\right) = \frac{1}{P}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can implement the Softmax costs very similarly to the way we did the Least Sqwuares cost for linear regression, as detailed in Section 8.1.3, breaking down our implementation into the linear <code>model</code> and the error itself.  Our linear <code>model</code> takes in both an appended input point $\mathring{\mathbf{x}}_p$ and a set of weights $\mathbf{w}$</p>
+<p>We can implement the Softmax costs very similarly to the way we did the Least Sqwuares cost for linear regression, as detailed in the prior Section, breaking down our implementation into the linear <code>model</code> and the error itself.  Our linear <code>model</code> takes in both an appended input point $\mathring{\mathbf{x}}_p$ and a set of weights $\mathbf{w}$</p>
 \begin{equation}
 \text{model}\left(\mathbf{x}_p,\mathbf{w}\right) = \mathring{\mathbf{x}}_{p}^{T}\mathbf{w}^{\,}.
 \end{equation}
@@ -14368,7 +14368,7 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P\text{log}\left(1 + e^{-y_p^{\,}\text{mod
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note here that the <em>implementation</em> differs slightly from the algebraic form of the linear <code>model</code>, taking in the original input and forming the compact version (stacking a $1$ atop each input) once inside (as was first explained in Section 5.1.3).</p>
+<p>Note here that the <em>implementation</em> differs slightly from the algebraic form of the linear <code>model</code>, taking in the original input and forming the compact version (stacking a $1$ atop each input) once inside (as was first explained in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_2_Least.html">Section 5.2</a>).</p>
 <p>Using the Log Error costs we can then implement the Softmax - employing efficient and compact <code>numpy</code> operations - as</p>
 </div>
 </div>
@@ -14442,7 +14442,7 @@ g(\mathbf{w}) = \frac{1}{P}\sum_{p=1}^P\text{log}\left(1 + e^{-y_p^{\,}\text{mod
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As alternative to using an Automatic Differentiator (which we use by default - employing <code>autograd</code> - see Section 3.11), one can perform gradient descent here by hand-computing the gradient of the Softmax cost function.  Using the simple derivative rules outlined in Chapter 3 gradient can be computed as</p>
+<p>As alternative to using an Automatic Differentiator (which we use by default - employing <code>autograd</code> - see <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_5_Automatic.html">Section 3.5</a>), one can perform gradient descent here by hand-computing the gradient of the Softmax cost function.  Using the simple derivative rules outlined in Chapter 3 gradient can be computed as</p>
 \begin{equation}
 \nabla g\left(\mathbf{w}\right) = - \frac{1}{P}\sum_{p = 1}^P \frac{ e^{-\overset{\,}{y}_p^{\,}\mathring{\mathbf{x}}_{p}^{T}\mathbf{w}^{\,} }}{1 + e^{-\overset{\,}{y}_p^{\,}\mathring{\mathbf{x}}_{p}^{T}\mathbf{w}^{\,}}}\overset{\,}{y}_p^{\,}\mathring{\mathbf{x}}_{p}^{\,}
 \end{equation}
@@ -14511,10 +14511,10 @@ of dividing two overflowing exponentials.</p>
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="65996ba7-d20a-4380-a738-43c7fb65f17a"></div>
+<div id="0f3ea4fa-602d-4e3d-8293-1cce1a429296"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#65996ba7-d20a-4380-a738-43c7fb65f17a');
+var element = $('#0f3ea4fa-602d-4e3d-8293-1cce1a429296');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15319,10 +15319,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="1db56e65-bdb0-4e11-90df-056712da2390"></div>
+<div id="23faf3a5-67ab-4f43-b311-544180b71487"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#1db56e65-bdb0-4e11-90df-056712da2390');
+var element = $('#23faf3a5-67ab-4f43-b311-544180b71487');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16134,10 +16134,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="8b894651-6e1c-4f29-9dc5-947d6a081b28"></div>
+<div id="ac3b7a38-0866-4ca7-b5d9-dc82bbb3b83a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#8b894651-6e1c-4f29-9dc5-947d6a081b28');
+var element = $('#ac3b7a38-0866-4ca7-b5d9-dc82bbb3b83a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16935,10 +16935,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="2327535e-4f4c-4ede-a761-ca93c799db04"></div>
+<div id="9b1eda20-1e04-4fb3-96ef-a62f964f650a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2327535e-4f4c-4ede-a761-ca93c799db04');
+var element = $('#9b1eda20-1e04-4fb3-96ef-a62f964f650a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -17745,7 +17745,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We know that the smallest eigenvalue of any square symmetric matrix is given as the minimum of the <em>Rayleigh quotient</em> (as detailed Section 6.1), i.e., the smallest value taken by</p>
+<p>We know that the smallest eigenvalue of any square symmetric matrix is given as the minimum of the <em>Rayleigh quotient</em> (as detailed <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_2_First.html">Section 3.2</a>), i.e., the smallest value taken by</p>
 \begin{equation}
 \mathbf{z}^T \nabla^2 g\left(\mathbf{w}\right) \mathbf{z}^{\,}
 \end{equation}<p>for any unit-length vector $\mathbf{z}$ and any possible weight vector $\mathbf{w}$. Substituting in the particular form of the Hessian here, denoting $\sigma_p = \left( \frac{1}{1 + e^{\,y_p^{\,} \mathbf{x}_p^T\mathbf{w}_{\,}^{\,}}} \right)  \left( 1 - \frac{1}{1 + e^{\,y_p^{\,} \mathbf{x}_p^T{\mathbf{w}_{\,}^{\,}}}} \right) $ for each $p$ for 

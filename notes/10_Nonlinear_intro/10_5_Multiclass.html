@@ -13221,11 +13221,11 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Recall that when dealing withi mulit-class classification (see Chapter 7) we have $N$ input/output pairs $\left(\mathbf{x}_p,\,y_p\right)$ where by default our label values lie in the set $y_p \in \left\{0,1,...,C-1\right\}$ (however note, as detailed in Section 7.4, we can indeed use any label values we wish), and our joint linear model for all $C$ clas (as first detailed in Section 7.1.7) takes the form</p>
+<p>Recall that when dealing withi mulit-class classification (see Chapter 7) we have $N$ input/output pairs $\left(\mathbf{x}_p,\,y_p\right)$ where by default our label values lie in the set $y_p \in \left\{0,1,...,C-1\right\}$ (however note, as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/7_Linear_multiclass_classification/7_3_Perceptron.html">Section 7.3</a>, we can indeed use any label values we wish), and our joint linear model for all $C$ clas (as first detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/7_Linear_multiclass_classification/7_2_OvA.html">Section 7.1.7</a>) takes the form</p>
 \begin{equation}
 \text{model}\left(\mathbf{x},\mathbf{W}\right) =
 \mathring{\mathbf{x}}^T\mathbf{W}^{\,}
-\end{equation}<p>where the weight matrix $\mathbf{W}$ has dimension $\left(N+1\right)\times C$.  Notice that - as was pointed out in Sections 7.1 and 7.2 - this is precisely the same linear model used with multi-output regression.  We can safely wager that the <em>nonlinear</em> extension of multi-class classification takes a similar form to that discussed for multi-output regression as detailed in Section 10.2 (and we would win this wager since - as we will see - this assertion is indeed correct).</p>
+\end{equation}<p>where the weight matrix $\mathbf{W}$ has dimension $\left(N+1\right)\times C$.  Notice that - as was pointed out in Sections 7.2 and 7.3 - this is precisely the same linear model used with multi-output regression.  We can safely wager that the <em>nonlinear</em> extension of multi-class classification takes a similar form to that discussed for multi-output regression as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">Section 10.2</a> (and we would win this wager since - as we will see - this assertion is indeed correct).</p>
 <p>With the parameters of this matrix fixed we make predictions based on the <em>fusion rule</em></p>
 \begin{equation}
 y = \underset{c=0,..,C-1}{\text{argmax}}\,\,\mathring{\mathbf{x}}^T\mathbf{w}_c^{\,}.
@@ -13236,10 +13236,10 @@ y = \underset{c=0,..,C-1}{\text{argmax}}\,\,\mathring{\mathbf{x}}^T\mathbf{w}_c^
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As discussed in Chapter 7 we can tune the parameters of this joint model <em>one column at a time</em> by solving a sequence of $C$ two-class subproblems <em>independently</em> - this is the One-versus-All approach detailed in Section 7.1.   We can also tune the parameters of $\mathbf{W}$ <em>simultaneously</em> by minimizing an appropriate multi-class cost function over the entire matrix at once using e.g., the Multiclass Softmax / Cross-Entropy cost detailed in Section 7.2</p>
+<p>As discussed in Chapter 7 we can tune the parameters of this joint model <em>one column at a time</em> by solving a sequence of $C$ two-class subproblems <em>independently</em> - this is the One-versus-All approach detailed in Section 7.2.   We can also tune the parameters of $\mathbf{W}$ <em>simultaneously</em> by minimizing an appropriate multi-class cost function over the entire matrix at once using e.g., the Multiclass Softmax / Cross-Entropy cost detailed in Section 7.3</p>
 \begin{equation}
 g\left(\mathbf{W}\right) = \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum_{c = 0}^{C-1}  e^{ \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_c^{\,}}  \right) - \mathring{\mathbf{x}}_{p}^T \overset{\,}{\mathbf{w}}_{y_p}^{\,}\right]
-\end{equation}<p>and unlike the case of multi-output regression these two approaches lead to similar but not exactly equivalent results (as detailed in Section 7.3).</p>
+\end{equation}<p>and unlike the case of multi-output regression these two approaches lead to similar but not exactly equivalent results.</p>
 </div>
 </div>
 </div>
@@ -13253,7 +13253,7 @@ g\left(\mathbf{W}\right) = \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Similar to the linear case, in general we have two main avenues for moving to nonlinear multi-class classification: we can either employ a One-versus-All approach and use precisely the framework for nonlinear two-class classification introduced in the previous Section with each of our $C$ two-class subproblems, or we can introduced nonlinearity <em>jointly</em> across all $C$ classifiers and tune all parameters simultaneously.  These are the same two choices we saw with nonlinear multi-output regression in Section 10.2.</p>
+<p>Similar to the linear case, in general we have two main avenues for moving to nonlinear multi-class classification: we can either employ a One-versus-All approach and use precisely the framework for nonlinear two-class classification introduced in the previous Section with each of our $C$ two-class subproblems, or we can introduced nonlinearity <em>jointly</em> across all $C$ classifiers and tune all parameters simultaneously.  These are the same two choices we saw with nonlinear multi-output regression in <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_3_MultReg.html">Section 10.3</a>.</p>
 </div>
 </div>
 </div>
@@ -13270,7 +13270,7 @@ g\left(\mathbf{W}\right) = \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum
 <p>On the other hand, if we choose a <em>single set of features</em> for all $C$ of our models we can express the $c^{th}$ of which compactly as</p>
 \begin{equation}
 \text{model}_c\left(\mathbf{x},\Theta_c\right) = \mathring{\mathbf{f}}_{\,}^T \mathbf{w}_c
-\end{equation}<p>employing the compact notation $\mathring{\mathbf{f}}_{\,}$ used in the previous Section to compactly denote our $B$ feature transformations, and denoting $\Theta_c$ as the linear combination weights and $\Theta_c$ the entire set of parameters (incuding any parameters internal to the feature transformations) for this classification.  As mentioned in Section 10.2.2, using the same feature transformation for each model is often done to simplify the chores of nonlinear feature engineering and - as we will see - nonlinear feature <em>learning</em>.</p>
+\end{equation}<p>employing the compact notation $\mathring{\mathbf{f}}_{\,}$ used in the previous Section to compactly denote our $B$ feature transformations, and denoting $\Theta_c$ as the linear combination weights and $\Theta_c$ the entire set of parameters (incuding any parameters internal to the feature transformations) for this classification.  As mentioned in Section 10.3.2, using the same feature transformation for each model is often done to simplify the chores of nonlinear feature engineering and - as we will see - nonlinear feature <em>learning</em>.</p>
 <p>Once each model has been tuned properly we predict the label of an input point $\mathbf{x}$ employing the fusion rule across all $C$ of these nonlinear models - mirroring our approach in the linear setting</p>
 \begin{equation}
 y = \underset{c=0,..,C-1}{\text{argmax}}\,\,\mathring{\mathbf{f}}_{\,}^T \mathbf{w}_c.
@@ -13281,7 +13281,7 @@ y = \underset{c=0,..,C-1}{\text{argmax}}\,\,\mathring{\mathbf{f}}_{\,}^T \mathbf
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Precisely as with multi-output regression detailed in Section 10.2.2 we can combine these $C$ models together (using precisely the same notation employed there) as</p>
+<p>Precisely as with multi-output regression detailed in Section 10.3.2 we can combine these $C$ models together (using precisely the same notation employed there) as</p>
 \begin{equation}
 \text{model}\left(\mathbf{x},\Theta\right) = \mathring{\mathbf{f}}_{\,}^T \mathbf{W} = \sum_{c=0}^{C-1} \mathring{\mathbf{f}}_{\,}^T \mathbf{w}_c
 \end{equation}<p>where note in particular here $\Theta$ contains the parameters of all $C$ individual models.</p>
@@ -13352,10 +13352,10 @@ g\left(\Theta\right) = \frac{1}{P}\sum_{p = 1}^P \left[\text{log}\left( \sum_{c 
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="bdcb71ca-cdf3-46b6-ac52-c11d8916a449"></div>
+<div id="355b14ae-6aea-40bb-bcd3-af02beab6d9e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#bdcb71ca-cdf3-46b6-ac52-c11d8916a449');
+var element = $('#355b14ae-6aea-40bb-bcd3-af02beab6d9e');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14166,10 +14166,10 @@ f\left(\mathbf{x}\right) = x_1^ix_2^j
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="394c2784-5fe1-41f1-9d42-7c9b490586fb"></div>
+<div id="167c1c08-25b5-4842-8967-d54bc8e96d65"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#394c2784-5fe1-41f1-9d42-7c9b490586fb');
+var element = $('#167c1c08-25b5-4842-8967-d54bc8e96d65');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14967,10 +14967,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="ff997a1b-292e-4bfd-a4ea-c4adc4ce8350"></div>
+<div id="1fd642ec-1113-4a8b-a7ad-3d34fbca5ab8"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#ff997a1b-292e-4bfd-a4ea-c4adc4ce8350');
+var element = $('#1fd642ec-1113-4a8b-a7ad-3d34fbca5ab8');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15760,7 +15760,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The general nonlinear model in equation (7) above can be implemented precisely as described in Section 10.1.4. since - indeed - it is the same general nonlineaer model we use with nonlinear multi-output regression.  Therefore, just as with multi-output regression, the we need not alter the implementation of a joint nonlinear multi-class classification cost function introduced in Chapter 7 to perform  classification: all we need to do is properly define our nonlinear transformation(s) in <code>Python</code> (if we wish to use an automatic differentiator then these should be expressed using <code>autograd</code>'s <code>numpy</code> wrapper).</p>
+<p>The general nonlinear model in equation (7) above can be implemented precisely as described in <a href="https://jermwatt.github.io/machine_learning_refined/notes/10_Nonlinear_intro/10_2_Regression.html">Section 10.2.4</a>. since - indeed - it is the same general nonlineaer model we use with nonlinear multi-output regression.  Therefore, just as with multi-output regression, the we need not alter the implementation of a joint nonlinear multi-class classification cost function introduced in Chapter 7 to perform  classification: all we need to do is properly define our nonlinear transformation(s) in <code>Python</code> (if we wish to use an automatic differentiator then these should be expressed using <code>autograd</code>'s <code>numpy</code> wrapper).</p>
 </div>
 </div>
 </div>

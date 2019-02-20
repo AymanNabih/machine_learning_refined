@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this Section we introduce the general framework of nonlinear unsupervised learning, with special emphasis on the Autoencoder from Section 8.3. In future Chapters we will look at particular examples of how to extend other unsupervised methods such as K-Means (introduced in Section 8.6).</p>
+<p>In this Section we introduce the general framework of nonlinear unsupervised learning, with special emphasis on the Autoencoder from <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_4_Autoencoder.html">Section 8.4</a>.</p>
 </div>
 </div>
 </div>
@@ -13245,7 +13245,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Section 8.3 we discussed the PCA Autoencoder, the fundamental cost function for PCA that leads to the classic orthogonal PCA solution (described in Section 8.4).  The Autoencoder cost function</p>
+<p>In <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_4_Autoencoder.html">Section 8.4</a> we discussed the PCA Autoencoder, the fundamental cost function for PCA that leads to the classic orthogonal PCA solution.  The Autoencoder cost function</p>
 \begin{equation}
 g\left(\mathbf{C}\right) = \frac{1}{P}\sum_{p = 1}^P \left \Vert \mathbf{C}_{\,}^{\,}\mathbf{C}_{\,}^T\mathbf{x}_p - \mathbf{x}_p \right\Vert_2^2
 \end{equation}<p>is parameterized by the $N\times K$ matrix $\mathbf{C}$ that will act as our recovered basis upon minimization.  Here our model is the entire computation</p>
@@ -13389,10 +13389,10 @@ g\left(\Theta\right) = \frac{1}{P}\sum_{p = 1}^P \left \Vert \,\text{model}\left
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="fb019558-d19e-4fee-b9b3-9cc5236c353d"></div>
+<div id="80b4e071-a6af-45c8-a924-d3e00f37dfe1"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#fb019558-d19e-4fee-b9b3-9cc5236c353d');
+var element = $('#80b4e071-a6af-45c8-a924-d3e00f37dfe1');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14232,10 +14232,10 @@ r_2\,\text{sin}(\theta_p)+w_2
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="4dfda867-de7a-4807-b648-17803b7fecc2"></div>
+<div id="325f5180-9df5-4798-8911-9075ba034d92"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4dfda867-de7a-4807-b648-17803b7fecc2');
+var element = $('#325f5180-9df5-4798-8911-9075ba034d92');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15033,10 +15033,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="d6d86268-3904-4601-8a0e-fd62340712e8"></div>
+<div id="1e16e7db-540c-4d09-abc7-b640ee9f194b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#d6d86268-3904-4601-8a0e-fd62340712e8');
+var element = $('#1e16e7db-540c-4d09-abc7-b640ee9f194b');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15815,10 +15815,10 @@ if (IPython.notebook.kernel != null) {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div id="b22110e8-907e-4dd5-b19d-273e35ca0f2b"></div>
+<div id="24890eb1-da70-4617-a9e8-e0c1941741bc"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#b22110e8-907e-4dd5-b19d-273e35ca0f2b');
+var element = $('#24890eb1-da70-4617-a9e8-e0c1941741bc');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -16608,7 +16608,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To implement the nonlinear Autoencoder in <code>Python</code> we can virtually re-use most of the code framework we employed in the linear case - including our <code>model</code> and <code>autoencoder</code> functions detailed in Section 8.3.  We only need to slightly modify the <code>model</code> function to take in a generally larger set of parameters - since each of our encoding/decoding functions can in general have unique sets of parameters. To keep things as general as possible we will rewrite the <code>model</code> function as shown below.  Note here we input $\Omega$ as a single list called <code>w</code> which contains two arrays: its first array <code>w[0]</code> contains the parameters of our encoder while the second array <code>w[1]</code> contains parameters of the decoder. The encoder and decoder's sets of parameters can be identical (as with the linear case discussed in the previous Subsection), partially overlap, or be completely disjoint.</p>
+<p>To implement the nonlinear Autoencoder in <code>Python</code> we can virtually re-use most of the code framework we employed in the linear case - including our <code>model</code> and <code>autoencoder</code> functions detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_4_Autoencoder.html">Section 8.4</a>.  We only need to slightly modify the <code>model</code> function to take in a generally larger set of parameters - since each of our encoding/decoding functions can in general have unique sets of parameters. To keep things as general as possible we will rewrite the <code>model</code> function as shown below.  Note here we input $\Omega$ as a single list called <code>w</code> which contains two arrays: its first array <code>w[0]</code> contains the parameters of our encoder while the second array <code>w[1]</code> contains parameters of the decoder. The encoder and decoder's sets of parameters can be identical (as with the linear case discussed in the previous Subsection), partially overlap, or be completely disjoint.</p>
 </div>
 </div>
 </div>

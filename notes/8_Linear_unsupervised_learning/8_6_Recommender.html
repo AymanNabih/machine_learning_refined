@@ -13362,7 +13362,7 @@ g\left(\mathbf{w}_1,...,\mathbf{w}_P,\mathbf{C}\right) = \frac{1}{P}\sum_{p = 1}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So far we have seen how the setup and cost function of the linear Recommender Systems model mirrors PCA very closely.  Now we discuss how to minimize the Least Squares cost function above in order to recover optimal settings for our parameter vectors $\mathbf{w}_1,...,\mathbf{w}_p$ and $\mathbf{c}_1,...,\mathbf{c}_K$.  In the case of PCA, we saw in Section 9.2.2 how the additional assumption that our basis is <em>orthonormal</em> allowed us to derive mathematically simple forms for our ideal parameter vectors.  However here the additional wrinkle of the Recommender Systems model - that we only have access to data whose indices lie in the set $\Omega$ - prohibits similar calculations.  Thus in short we must rely on an iterative method for learning ideal parameters here like gradient descent or coordinate / block-coordinate descent.  Here we show a few simple examples of minimizing the Recommender System Least Squares cost via gradient descent.</p>
+<p>So far we have seen how the setup and cost function of the linear Recommender Systems model mirrors PCA very closely.  Now we discuss how to minimize the Least Squares cost function above in order to recover optimal settings for our parameter vectors $\mathbf{w}_1,...,\mathbf{w}_p$ and $\mathbf{c}_1,...,\mathbf{c}_K$.  In the case of PCA, we saw in <a href="https://jermwatt.github.io/machine_learning_refined/notes/8_Linear_unsupervised_learning/8_5_Classic.html">Section 8.5</a> how the additional assumption that our basis is <em>orthonormal</em> allowed us to derive mathematically simple forms for our ideal parameter vectors.  However here the additional wrinkle of the Recommender Systems model - that we only have access to data whose indices lie in the set $\Omega$ - prohibits similar calculations.  Thus in short we must rely on an iterative method for learning ideal parameters here like gradient descent or coordinate / block-coordinate descent.  Here we show a few simple examples of minimizing the Recommender System Least Squares cost via gradient descent.</p>
 </div>
 </div>
 </div>
@@ -13480,10 +13480,10 @@ g\left(\mathbf{W},\mathbf{C}\right) = \frac{1}{P} \left \Vert \left.\left\{  \ma
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="52265f49-7801-4e35-8ab4-327a83d824ff"></div>
+<div id="b9883b13-0d33-49e7-972f-8d45097af444"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#52265f49-7801-4e35-8ab4-327a83d824ff');
+var element = $('#b9883b13-0d33-49e7-972f-8d45097af444');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14289,10 +14289,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="8efd3e73-783f-4b2a-a873-58c39953c22a"></div>
+<div id="a23a363c-c466-4d62-8697-37174620e554"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#8efd3e73-783f-4b2a-a873-58c39953c22a');
+var element = $('#a23a363c-c466-4d62-8697-37174620e554');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

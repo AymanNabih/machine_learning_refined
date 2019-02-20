@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Because our two-class classification cost functions are <em>summable over individual points</em> we can - as we did with regression in Section 8.3 - weight individual points in order to emphasize or de-emphasize their importance to a classification model.  This is called <em>weighted classification</em>.  This idea is often implemented when dealing with <em>highly imbalanced</em> two class datasets, as we discuss here.</p>
+<p>Because our two-class classification cost functions are <em>summable over individual points</em> we can - as we did with regression in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_5_Weighted.html">Section 5.5</a> - weight individual points in order to emphasize or de-emphasize their importance to a classification model.  This is called <em>weighted classification</em>.  This idea is often implemented when dealing with <em>highly imbalanced</em> two class datasets, as we discuss here.</p>
 </div>
 </div>
 </div>
@@ -13245,7 +13245,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Just as we saw with regression in Section 8.3, weighted classification cost functions naturally arise due to epeated points in a dataset.  When collecting metadata (e.g., census data) it is not so uncommon collect duplicate entries - multiple people having similar/the same stats based on a given survey.</p>
+<p>Just as we saw with regression in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_5_Weighted.html">Section 5.5</a>, weighted classification cost functions naturally arise due to epeated points in a dataset.  When collecting metadata (e.g., census data) it is not so uncommon collect duplicate entries - multiple people having similar/the same stats based on a given survey.</p>
 </div>
 </div>
 </div>
@@ -13267,10 +13267,10 @@ div#notebook {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="4c387bb2-1a30-4b4c-9d35-6228c29c58df"></div>
+<div id="81f9984d-31e5-4d5e-b7ff-2a25d8f2e456"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#4c387bb2-1a30-4b4c-9d35-6228c29c58df');
+var element = $('#81f9984d-31e5-4d5e-b7ff-2a25d8f2e456');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14053,10 +14053,10 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Just as with a regression cost, if we examine any two-class classification cost it will 'collapse', with summands containing identical points combining naturally.  One can see this by performing the same kind of simple exercise used in Section 8.4.1 to illustrate this fact for regression.  This leads to the notion of <em>weighting</em> two-class cost functions, like e.g., the weighted softmax below (written using our general <code>model</code> notation used in e.g., Section 9.1.5 to represent the linear model)</p>
+<p>Just as with a regression cost, if we examine any two-class classification cost it will 'collapse', with summands containing identical points combining naturally.  One can see this by performing the same kind of simple exercise used in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_5_Weighted.html">Section 5.5</a> to illustrate this fact for regression.  This leads to the notion of <em>weighting</em> two-class cost functions, like e.g., the weighted softmax below (written using our general <code>model</code> notation used)</p>
 \begin{equation}
 g\left(\mathbf{w}\right) = \sum_{p=1}^P\beta_p\,\text{log}\left(1 + e^{-y_p\text{model}\left(x_p,\mathbf{w}\right)}\right).
-\end{equation}<p>Here - as in Section 8.4 - the values $\beta_1,\,\beta_2,\,...,\,\beta_P$ are fixed <em>point-wise</em> weights.  That is, a unique point $\left(x_p,\,y_p\right)$ in the dataset has weight $\beta_p = 1$ whereas if this point is repeated $R$ times in the dataset then one instance of it will have weight $\beta_p = R$ while the others have weight $\beta_p = 0$.</p>
+\end{equation}<p>Here the values $\beta_1,\,\beta_2,\,...,\,\beta_P$ are fixed <em>point-wise</em> weights.  That is, a unique point $\left(x_p,\,y_p\right)$ in the dataset has weight $\beta_p = 1$ whereas if this point is repeated $R$ times in the dataset then one instance of it will have weight $\beta_p = R$ while the others have weight $\beta_p = 0$.</p>
 <p>Since these weights are fixed (i.e., they are <em>not</em> parameters that need to be tuned, like $\mathbf{w}$) we can minimize a weighted classification cost precisely as we would any other e.g,. via a local optimization scheme like gradient descent or Newton's method.</p>
 </div>
 </div>

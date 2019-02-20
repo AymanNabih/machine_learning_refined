@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the previous Sections we have employed by default the numerical label values $y_p \in \left\{0,1,...,C-1\right\}$.  However like the two class case - as discussed in Section 6.5 - the choice of label values with multi-class classification <em>is arbitrary</em>.  We can use other numerical values if we desire - or even unordered objects like one-hot encoded vectors.  However regardless of how we define our labels we still end up building the same sort multi-class classifier we have seen previously - tuning its weights by minimization of a familiar cost function like e.g., the Multi-class Softmax / Cross Entropy cost.</p>
+<p>In the previous Sections we have employed by default the numerical label values $y_p \in \left\{0,1,...,C-1\right\}$.  However like the two class case - as discussed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_6_Categorical.html">Section 6.6</a> - the choice of label values with multi-class classification <em>is arbitrary</em>.  We can use other numerical values if we desire - or even unordered objects like one-hot encoded vectors.  However regardless of how we define our labels we still end up building the same sort multi-class classifier we have seen previously - tuning its weights by minimization of a familiar cost function like e.g., the Multi-class Softmax / Cross Entropy cost.</p>
 </div>
 </div>
 </div>
@@ -13321,7 +13321,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This function $\sigma\left(\cdot\right)$ is called a <em>normalized exponential function</em>, and can be thought of as a generalization of the <em>sigmoid</em> introduced in Section 6.1.  It is often used so that we may think of about an arbitrary vector $\mathbf{s}$ (possibly containing negative as well as positive entries) as a <em>discrete probability distribution</em>.  Using this transformation the <em>largest</em> entry of $\mathbf{s}$ is turned into the value $\sigma\left(\mathbf{s}\right)$ <em>closest</em> to $1$, and smallest value the one closest to $0$.</p>
+<p>This function $\sigma\left(\cdot\right)$ is called a <em>normalized exponential function</em>, and can be thought of as a generalization of the <em>sigmoid</em> introduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a>.  It is often used so that we may think of about an arbitrary vector $\mathbf{s}$ (possibly containing negative as well as positive entries) as a <em>discrete probability distribution</em>.  Using this transformation the <em>largest</em> entry of $\mathbf{s}$ is turned into the value $\sigma\left(\mathbf{s}\right)$ <em>closest</em> to $1$, and smallest value the one closest to $0$.</p>
 </div>
 </div>
 </div>
@@ -13347,7 +13347,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that the normalized exponential also called - often in the context of neural networks - the <em>softmax activation</em>.  This naming convention is unfortunate, as the normalized exponential is <em>not</em> a soft version of the $\text{max}$ function as the rightly named <em>softmax function</em> detailed in e.g., Section 7.2.5 is and should not be confused with it.  While it is a transformation that does <em>preserve</em> the index of the largest entry of its input, it is not a soft version of the $\text{argmax}$ function either (as it is sometimes erroneously claimed to be).</p>
+<p>Note that the normalized exponential also called - often in the context of neural networks - the <em>softmax activation</em>.  This naming convention is unfortunate, as the normalized exponential is <em>not</em> a soft version of the $\text{max}$ function as the rightly named <em>softmax function</em> detailed in e.g., <a href="https://jermwatt.github.io/machine_learning_refined/notes/7_Linear_multiclass_classification/7_3_Perceptron.html">Section 7.3</a> is and should not be confused with it.  While it is a transformation that does <em>preserve</em> the index of the largest entry of its input, it is not a soft version of the $\text{argmax}$ function either (as it is sometimes erroneously claimed to be).</p>
 </div>
 </div>
 </div>
@@ -13413,7 +13413,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the figure below we use the prototype $C = 3$ class dataset (introduced in Section 7.1) and visualize both signed distance vectors as histograms for several points (left panel) as well as their normalized exponential versions (right panel).</p>
+<p>In the figure below we use the prototype $C = 3$ class dataset (introduced in <a href="https://jermwatt.github.io/machine_learning_refined/notes/7_Linear_multiclass_classification/7_2_OvA.html">Section 7.2</a>) and visualize both signed distance vectors as histograms for several points (left panel) as well as their normalized exponential versions (right panel).</p>
 </div>
 </div>
 </div>
@@ -13485,7 +13485,7 @@ y_p  = C-1 \longleftarrow  \mathbf{y}_p = \begin{bmatrix} 0,\, 0,\, \cdots 0 ,\,
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However notice now that we have <em>vector output</em> instead of scalar numerical values that our problem is now an instance of <em>multi-output regression</em>, as detailed for the linear case in Section 5.5.  In other words, if we aimed to learn a <em>linear</em> relationship between our input and output we would want to tune $\mathbf{W}$ so that</p>
+<p>However notice now that we have <em>vector output</em> instead of scalar numerical values that our problem is now an instance of <em>multi-output regression</em>, as detailed for the linear case in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>.  In other words, if we aimed to learn a <em>linear</em> relationship between our input and output we would want to tune $\mathbf{W}$ so that</p>
 \begin{equation}
 \mathring{\mathbf{x}}_{p}^T\mathbf{W} \approx \mathbf{y}_p
 \end{equation}<p>holds as closely as possible for as many datapoints as possible.  But of course we <em>know</em> our output $\mathbf{y}_p$ does not consist of continuous values but are one-hot encoded vectors, and so a linear model would not represent such vectors very well at all.  However we know that <em>normalized exponential</em> transforms such a linear combination so that a) the numerical order of its entries is preserved b) all of its entires become nonnegative and c) the sum of its entries equals exactly $1$.  So we could indeed tune $\mathbf{W}$ so that</p>
@@ -13505,11 +13505,11 @@ y_p  = C-1 \longleftarrow  \mathbf{y}_p = \begin{bmatrix} 0,\, 0,\, \cdots 0 ,\,
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To learn our weights properly we could employ a standard pointwise regression cost like e.g., the Least Squares (see Section 5.5)</p>
+<p>To learn our weights properly we could employ a standard pointwise regression cost like e.g., the Least Squares (see <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>)</p>
 \begin{equation}
 g_p\left(\mathbf{W}\right) = \left\Vert
 \sigma\left(\mathring{\mathbf{x}}_{p}^T\mathbf{W}\right) - \mathbf{y}_p \right\Vert_2^2.
-\end{equation}<p>However, as we discussed exensively in Section 6.1, 6.2, and 6.5 a more appropriate pointwise cost when dealing with <em>binary output</em> is the Log Error since it more heavily penalizes error in such instances.  Here the Log Error of $\sigma\left(\mathring{\mathbf{x}}_{p}^T\mathbf{W}\right)$ and $\mathbf{y}_p$ can be written as</p>
+\end{equation}<p>However, as we discussed exensively in Section <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">6.2</a>, <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_3_Softmax.html">6.3</a>, and <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_5_SVMs.html">6.5</a> a more appropriate pointwise cost when dealing with <em>binary output</em> is the Log Error since it more heavily penalizes error in such instances.  Here the Log Error of $\sigma\left(\mathring{\mathbf{x}}_{p}^T\mathbf{W}\right)$ and $\mathbf{y}_p$ can be written as</p>
 \begin{equation}
 g_p\left(\mathbf{W}\right) = - \sum_{c=0}^C y_{p,c}\,\text{log} \, \sigma
 \left(\mathring{\mathbf{x}}_{p}^T\mathbf{W}\right)_c.

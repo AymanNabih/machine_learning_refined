@@ -13199,7 +13199,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Sections 6.1 - 6.2 we saw how two different choices for label values, $y_p \in \left\{0,1\right\}$ or $y_p \in \left\{-1,+1\right\}$, result in precisely the same two class classification via Cross Entropy / Softmax cost function minimization.  In each instance we formed a <em>Log Error</em> cost per datapoint, and averaging these over all $P$ datapoints provided a proper and convex cost function.  In other words, the numerical values of the label pairs themselves were largely used just to <em>simplify</em> the expression of these cost functions.  Given the pattern for deriving convex cost functions for logistic regression, which we have now seen <em>twice</em> (once in each of the previous two Sections),  given any two <em>numerical</em> label values $y_p \in \left\{a,b\right\}$ it would be a straightforward affair to derive an appropriate convex cost function based on a Log Error like pointwise cost.</p>
+<p>In Sections <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">6.2</a> and <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_3_Softmax.html">6.3</a> we saw how two different choices for label values, $y_p \in \left\{0,1\right\}$ or $y_p \in \left\{-1,+1\right\}$, result in precisely the same two class classification via Cross Entropy / Softmax cost function minimization.  In each instance we formed a <em>Log Error</em> cost per datapoint, and averaging these over all $P$ datapoints provided a proper and convex cost function.  In other words, the numerical values of the label pairs themselves were largely used just to <em>simplify</em> the expression of these cost functions.  Given the pattern for deriving convex cost functions for logistic regression, which we have now seen <em>twice</em> (once in each of the previous two Sections),  given any two <em>numerical</em> label values $y_p \in \left\{a,b\right\}$ it would be a straightforward affair to derive an appropriate convex cost function based on a Log Error like pointwise cost.</p>
 </div>
 </div>
 </div>
@@ -13207,7 +13207,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>However the true range of label value choices is even broader than this - than two <em>numerical</em> values.  We can really use <em>any two distinct objects as labels</em> as well, i.e., two unordered values.  However regardless of how we define our labels we still end up building the same sort two class classifier we have seen previously - tuning its weights by minimization of a familiar cost function like e.g., the Softmax / Cross Entropy cost.</p>
-<p>To drive home this point, in this brief Section we show how to derive the same Cross Entropy cost function seen in Section 6.1 employing <em>categorical labels</em> instead of numerical ones.  This leads to the derivation of the so-called <em>Categorical Cross Entropy cost</em> function which - as we will see - is equivalent to the Softmax / Cross Entropy cost functions we have seen previously.</p>
+<p>To drive home this point, in this brief Section we show how to derive the same Cross Entropy cost function seen in <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a> employing <em>categorical labels</em> instead of numerical ones.  This leads to the derivation of the so-called <em>Categorical Cross Entropy cost</em> function which - as we will see - is equivalent to the Softmax / Cross Entropy cost functions we have seen previously.</p>
 </div>
 </div>
 </div>
@@ -13246,7 +13246,7 @@ y_p  = 1 \longleftarrow  \mathbf{y}_p = \begin{bmatrix} 0 \\ 1   \end{bmatrix}.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>With these new <em>categorical labels</em> our classification task - when viewed as a <em>regression problem</em> - is a special case of <em>multioutput regression</em> (as detailed in Section 5.5) where we aim to regress $N$ dimensional input against two dimensional categorical labels using a nonlinear function the linear combination $\mathring{\mathbf{x}}_{p}^T\mathbf{w}^{\,}$.  Because our categorical labels have length two we need to use a nonlinear function of this linear combination that produces <em>two</em> outputs as well.  Since the labels are one-hot encoded and we are familiar with the sigmoid function, it then makes sense to sense use the following nonlinear function of each input point $\mathbf{x}_p$</p>
+<p>With these new <em>categorical labels</em> our classification task - when viewed as a <em>regression problem</em> - is a special case of <em>multioutput regression</em> (as detailed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_6_Multi.html">Section 5.6</a>) where we aim to regress $N$ dimensional input against two dimensional categorical labels using a nonlinear function the linear combination $\mathring{\mathbf{x}}_{p}^T\mathbf{w}^{\,}$.  Because our categorical labels have length two we need to use a nonlinear function of this linear combination that produces <em>two</em> outputs as well.  Since the labels are one-hot encoded and we are familiar with the sigmoid function, it then makes sense to sense use the following nonlinear function of each input point $\mathbf{x}_p$</p>
 \begin{equation}
 \overset{\,}{\boldsymbol{\sigma}}_p = \begin{bmatrix}  \sigma\left(\mathring{\mathbf{x}}_{p}^T\mathbf{w}^{\,}\right) \\ 1 - \sigma\left(\mathring{\mathbf{x}}_{p}^T\mathbf{w}^{\,}\right) \end{bmatrix}.
 \end{equation}
@@ -13306,7 +13306,7 @@ g_p\left(\mathbf{w}\right) = -\mathbf{y}_p^T\,\text{log}\,\boldsymbol{\sigma}_p^
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>However it is easy to see that this form is <em>precisely the Log Error we found in Section 6.1.5</em>.  In other words, written in terms of our original <em>numerical</em> labels, the pointwise cost above is precisely</p>
+<p>However it is easy to see that this form is <em>precisely the Log Error we found in  <a href="https://jermwatt.github.io/machine_learning_refined/notes/6_Linear_twoclass_classification/6_2_Cross_entropy.html">Section 6.2</a></em>.  In other words, written in terms of our original <em>numerical</em> labels, the pointwise cost above is precisely</p>
 </div>
 </div>
 </div>
