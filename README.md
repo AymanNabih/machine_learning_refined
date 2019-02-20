@@ -124,16 +124,6 @@ In the `exercises` directory you can find starting wrappers for coding exercises
 <br><br><br>
 
 
-## Installation
-[(Back to top)](#table-of-contents)
-
-To successfully run the Jupyter notebooks contained in this repo we highly recommend downloading the [Anaconda Python 3 distribution](https://www.anaconda.com/download/#macos). Many of these notebooks also employ the Automatic Differentiator [autograd](https://github.com/HIPS/autograd) which can be installed by typing the following command at your terminal
-      
-      pip install autograd
-      
-With minor adjustment users can also run these notebooks using the GPU/TPU extended version of autograd [JAX](https://github.com/google/jax).<br><br><br>
-
-
 ## Notes
 [(Back to top)](#table-of-contents)
 
@@ -273,7 +263,17 @@ With minor adjustment users can also run these notebooks using the GPU/TPU exten
 14.6 Random forests  <br>
 14.7 Cross-validating individual trees <br><br><br>
 
-<br><br><br>
+
+## Installation
+[(Back to top)](#table-of-contents)
+
+To successfully run the Jupyter notebooks contained in this repo we highly recommend downloading the [Anaconda Python 3 distribution](https://www.anaconda.com/download/#macos). Many of these notebooks also employ the Automatic Differentiator [autograd](https://github.com/HIPS/autograd) which can be installed by typing the following command at your terminal
+      
+      pip install autograd
+      
+With minor adjustment users can also run these notebooks using the GPU/TPU extended version of autograd [JAX](https://github.com/google/jax).<br><br><br>
+
+
 ## Creators 
 
 [(Back to top)](#table-of-contents)
