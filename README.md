@@ -11,8 +11,8 @@
 # Table of contents
 
 - [A little sampler first](#a-little-sampler-first)
+- [What is in this book?](#what-is-in-this-book)
 - [Who is this book for?](#who-is-this-book-for)
-- [What is in the book?](#what-is-in-the-book)
 - [What is in the repo?](#what-is-in-the-repo)
 - [Notes](#notes)
 - [Installation](#installation)
@@ -84,6 +84,15 @@ Feature selection via regularization | Secant planes
 ---|---
 Function approximation with a neural network | A regression tree
 
+<br><br><br>
+## What is in this book?
+
+[(Back to top)](#table-of-contents)
+
+We believe that understanding machine learning is impossible without having a firm grasp of its underlying mathematical machiney. But we also believe that the bulk of learning the subject takes place when learners "get their hands dirty" and code things up for themselves. **That's why in this book we discuss both how to derive machine learnig models mathematically and how to implement them from scratch**  (using `numpy`, `matplotlib`, and `autograd` libraries) - and yes, this includes multi-layer neural networks as well!
+<br><br><br>
+
+
 ## Who is this book for?
 
 [(Back to top)](#table-of-contents)
@@ -91,14 +100,6 @@ Function approximation with a neural network | A regression tree
 This text aims to bridge the existing gap between **practicality** and **rigor** in machine learning education, in a market saturated with books that are either mathematically rigorous but not practical, or vice versa. Conventional textbooks usually place little to no emphasis on coding, leaving the reader struggling to put what they learned into practice. On the other hand the more hands-on books in the market typically lack rigor, leaving machine learning a 'black box' to the reader.
 
 If you're looking for a practical yet rigorous treatment of machine learning, then this book is for you. 
-<br><br><br>
-
-
-## What is in the book?
-
-[(Back to top)](#table-of-contents)
-
-We believe that understanding machine learning is impossible without having a firm grasp of its underlying mathematical machiney. But we also believe that the bulk of learning the subject takes place when learners "get their hands dirty" and code things up for themselves. **That's why in this book we discuss both how to derive machine learnig models mathematically and how to implement them from scratch**  (using `numpy`, `matplotlib`, and `autograd` libraries) - and yes, this includes multi-layer neural networks as well!
 <br><br><br>
 
 
