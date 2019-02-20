@@ -13263,7 +13263,7 @@ x_{2,p}\\
 \vdots\\
 x_{N,p}
 \end{bmatrix},\,\,\,\, p = 1,...,P
-\end{equation}<p>where $\mathbf{w}_c$ is a set of weights then - if these are tuned properly - the assumption of a linear relationship looks like precisely what we have seen starting in Section 8.1</p>
+\end{equation}<p>where $\mathbf{w}_c$ is a set of weights then - if these are tuned properly - the assumption of a linear relationship looks like precisely what we have seen starting in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_2_Least.html">Section 5.1</a></p>
 \begin{equation}
 \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{w}}_{c}^{\,}    \approx \overset{\,}{y}_{c,p}^{\,} \,\,\,\,\,\,\,\,\,\,\,    \,\,\,\,\,\,\,\,\,\,\, p=1,...,P.
 \end{equation}
@@ -13334,7 +13334,7 @@ w_{N,0}  &amp;  w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The thought process involved in deriving a regression cost function for the case of multi-output regression mirrors almost exactly the scalar-output case discussed in Sections 8.1 and 8.2.  For example, to derive a Least Squares cost function we begin in the same way we did in Section 8.1 - by taking the difference of both sides in equation (6) above.  However now the error associated with the $p^{th}$ point, written as $\mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{W}}_{\,}^{\,}    - \overset{\,}{\mathbf{y}}_{p}^{\,}$, has $C$ values.  To square this error we must employ the <em>squared</em> $\ell_2$ norm, which is a natural extension of the squaring operation $\left(\cdot\right)^2$ to vectors (described further in Appendix Section).  The Least Squares cost function in this case is then the average of the $\ell_2$ norm of each point's error as</p>
+<p>The thought process involved in deriving a regression cost function for the case of multi-output regression mirrors almost exactly the scalar-output case discussed in Sections <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_2_Least.html">5.2</a> and <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_3_Absolute.html">5.3</a>.  For example, to derive a Least Squares cost function we begin by taking the difference of both sides in equation (6) above.  However now the error associated with the $p^{th}$ point, written as $\mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{W}}_{\,}^{\,}    - \overset{\,}{\mathbf{y}}_{p}^{\,}$, has $C$ values.  To square this error we must employ the <em>squared</em> $\ell_2$ norm, which is a natural extension of the squaring operation $\left(\cdot\right)^2$ to vectors (described further in Appendix Section).  The Least Squares cost function in this case is then the average of the $\ell_2$ norm of each point's error as</p>
 \begin{equation}
  g\left(\mathbf{W}\right) = \frac{1}{P}\sum_{p=1}^{P} \left \Vert \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{W}}_{\,}^{\,}    - \overset{\,}{\mathbf{y}}_{p}^{\,} \right \Vert_2^2 = \frac{1}{P}\sum_{p=1}^{P} \sum_{c=0}^{C-1} \left( \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{w}}_{c}^{\,}   - \overset{\,}{y}_{c,p}^{\,}   \right)^2
 \end{equation}
@@ -13344,7 +13344,7 @@ w_{N,0}  &amp;  w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When the output takes on scalar value, that is when $C=1$, this reduces to the Least Squares cost we saw in Section 8.1.</p>
+<p>When the output takes on scalar value, that is when $C=1$, this reduces to the Least Squares cost we saw in <a href="https://jermwatt.github.io/machine_learning_refined/notes/5_Linear_regression/5_2_Least.html">Section 5.2</a>.</p>
 <p>Likewise the analagous Least Absolute Deviations (which measures the absolute value of each error as opposed to its square) cost for our present case takes the form</p>
 \begin{equation}
  g\left(\mathbf{W}\right) = \frac{1}{P}\sum_{p=1}^{P} \left \Vert \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{W}}_{\,}^{\,}    - \overset{\,}{\mathbf{y}}_{p}^{\,} \right \Vert_1 = \frac{1}{P}\sum_{p=1}^{P} \sum_{c=0}^{C-1} \left\vert \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{w}}_{c}^{\,}   - \overset{\,}{y}_{c,p}^{\,}   \right\vert
@@ -13355,7 +13355,7 @@ w_{N,0}  &amp;  w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>These cost functions - like their scalar-valued output analogs described in Sections 5.1 and 5.2 - are alwasy convex <em>regardless of the dataset used</em>.</p>
+<p>These cost functions - like their scalar-valued output analogs described are alwasy convex <em>regardless of the dataset used</em>.</p>
 <p>They also <em>decompose over the weights $\mathbf{w}_c$ associated with each output dimension</em>.  For example, notice that we can rewrite the right hand side of the Least Absolute Deviations cost above by swpping the summands over $P$ and $C$ giving</p>
 \begin{equation}
  g\left(\mathbf{W}\right) =  \sum_{c=0}^{C-1} \left(\frac{1}{P}\sum_{p=1}^{P} \left\vert \mathring{\mathbf{x}}_{p}^T  \overset{\,}{\mathbf{w}}_{c}^{\,}   - \overset{\,}{y}_{c,p}^{\,}   \right\vert\right)  =  \sum_{c=0}^{C-1} g_c\left(\mathbf{w}_c\right)
@@ -13467,10 +13467,10 @@ w_{N,1} &amp; w_{N,2}  &amp;  \cdots  &amp;  w_{N,C-1}  \\
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="23efac80-7710-4c09-8713-670cf084686b"></div>
+<div id="ac22646c-19eb-4f20-bd06-f5ed24897a1a"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#23efac80-7710-4c09-8713-670cf084686b');
+var element = $('#ac22646c-19eb-4f20-bd06-f5ed24897a1a');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -14268,10 +14268,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="2916201f-85d5-4bf7-bbaa-2bdd9c5b64e0"></div>
+<div id="66b83731-b55b-409b-98b6-450d2d691943"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#2916201f-85d5-4bf7-bbaa-2bdd9c5b64e0');
+var element = $('#66b83731-b55b-409b-98b6-450d2d691943');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -15054,7 +15054,7 @@ if (IPython.notebook.kernel != null) {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Using the fully trained model from this run of gradient descent (implemented as shown in Section 8.4.3) we evaluate a fine mesh of points in the region over which the input of this dataset is defined to visualize our linear approximations.  These are shown in light green in the panels below.</p>
+<p>Using the fully trained model from this run of gradient descent we evaluate a fine mesh of points in the region over which the input of this dataset is defined to visualize our linear approximations.  These are shown in light green in the panels below.</p>
 </div>
 </div>
 </div>
@@ -15069,10 +15069,10 @@ if (IPython.notebook.kernel != null) {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="6cfb560e-e3ec-4503-a0a6-26a4aaf042de"></div>
+<div id="dee2f63c-1ff0-48e3-b995-63e795482f33"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#6cfb560e-e3ec-4503-a0a6-26a4aaf042de');
+var element = $('#dee2f63c-1ff0-48e3-b995-63e795482f33');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 

@@ -13223,7 +13223,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Section 3.7 we discussed two fundamental problems with the negative gradient insofar as it is used as a descent direction for local optimization: the zig-zagging and slow-crawling behaviors.  In the Sections that then followed we detailed fundamental solutions to each of these problems independently, momentum and gradient normalized descent.  These two fundamental problems can certainly occur together in practice, particularly with the sort of functions we minimize in machine learning (particularly those involving <em>neural networks</em>).  They both occur with functions that have flat long narrow valleys that provoke zig-zagging of gradient descent steps due to the shape of their contours, and slow crawling of the steps due to the area's flatness.</p>
+<p>In <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_7_Problems.html">Section 3.7</a> we discussed two fundamental problems with the negative gradient insofar as it is used as a descent direction for local optimization: the zig-zagging and slow-crawling behaviors.  In the Sections that then followed we detailed fundamental solutions to each of these problems independently, momentum and gradient normalized descent.  These two fundamental problems can certainly occur together in practice, particularly with the sort of functions we minimize in machine learning (particularly those involving <em>neural networks</em>).  They both occur with functions that have flat long narrow valleys that provoke zig-zagging of gradient descent steps due to the shape of their contours, and slow crawling of the steps due to the area's flatness.</p>
 </div>
 </div>
 </div>
@@ -13252,7 +13252,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In Section 3.7 we described the notion of <em>momentum accelerated gradient descent</em>, and how it is a natural remedy for the <em>zig-zagging</em> problem the standard gradient descent algorithm suffers from when run along <em>long narrow valleys</em>.  As we the momentum acceleration descent direction $\mathbf{d}^{k-1}$ is simply an <em>exponential average</em> of gradient descent directions taking the form</p>
+<p>In <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_7_Problems.html">Section 3.7</a> we described the notion of <em>momentum accelerated gradient descent</em>, and how it is a natural remedy for the <em>zig-zagging</em> problem the standard gradient descent algorithm suffers from when run along <em>long narrow valleys</em>.  As we the momentum acceleration descent direction $\mathbf{d}^{k-1}$ is simply an <em>exponential average</em> of gradient descent directions taking the form</p>
 \begin{equation}
 \mathbf{d}^{k-1} = \beta \, \mathbf{d}^{k-2}  - \left(1 - \beta\right)\nabla g\left(\mathbf{w}^{k-1}\right) \\
 \mathbf{w}^{\,k} = \mathbf{w}^{\,k-1} + \alpha \, \mathbf{d}^{k-1} \,\,\,\,\,\,\,\,\,\,\,\,\,     \,\,\,\,\,\,\,\,\,\,\,\,\,      \,\,\,
@@ -13263,7 +13263,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Then in Section 3.8 we saw how <em>normalizing the gradient descent direction componentwise</em> helps deal with the problem standard gradient descent has when traversering <em>flat regions</em> of a function.  We saw there how a component-normalized gradient descent step takes the form (for the $j^{th}$ component of $\mathbf{w}$)</p>
+<p>Then in <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_9_Normalized.html">Section 3.9</a> we saw how <em>normalizing the gradient descent direction componentwise</em> helps deal with the problem standard gradient descent has when traversering <em>flat regions</em> of a function.  We saw there how a component-normalized gradient descent step takes the form (for the $j^{th}$ component of $\mathbf{w}$)</p>
 \begin{equation}
 w_j^k = w_j^{k-1} - \alpha \, \frac{\frac{\partial}{\partial w_j}g\left(\mathbf{w}^{k-1}\right)}{{\sqrt{\left(\frac{\partial}{\partial w_j}g\left(\mathbf{w}\right)\right)^2}}}
 \end{equation}
@@ -13399,7 +13399,7 @@ $d^0_j = 0$ and $h^0_j = 0$ - instead of the first step in each series they resp
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This popular first order step is a varient of the <em>component-normalized</em> step discussed in Section 3.8, where each component of the gradient is normalized by an <em>exponential average</em> of the magnitude of previously computed gradient descent directions.</p>
+<p>This popular first order step is a varient of the <em>component-normalized</em> step discussed in <a href="https://jermwatt.github.io/machine_learning_refined/notes/3_First_order_methods/3_9_Normalized.html">Section 3.9</a>, where each component of the gradient is normalized by an <em>exponential average</em> of the magnitude of previously computed gradient descent directions.</p>
 <p>In other words, we compute an exponential average of the <em>magnitude</em> of the gradient at each step.  Denoting $h_j^{k}$ the exponential average of of the squared magnitude of the $j^{th}$ partial derivative at step $k$ we have</p>
 \begin{equation}
 h_j^k = \gamma \, h_j^{k-1} + \left(1 - \gamma\right)\left(\frac{\partial}{\partial w_j}g\left(\mathbf{w}^{k-1}\right)\right)^2
