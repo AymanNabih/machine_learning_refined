@@ -14,8 +14,8 @@
 - [Who is this book for?](#who-is-this-book-for)
 - [What is in the book?](#what-is-in-the-book)
 - [What is in the repo?](#what-is-in-the-repo)
-- [Installation](#installation)
 - [Notes](#notes)
+- [Installation](#installation)
 - [Creators](#creators)
 
 <br><br><br>
