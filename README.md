@@ -1,6 +1,6 @@
 # Machine Learning Refined: Notes, Exercises, and Jupyter notebooks [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Machine%20Learning%20Refined:%20notes,%20exercises,%20and%20Jupyter%20notebooks%20&url=https://github.com/jermwatt/machine_learning_refined)
 
-<img align="right" src="html/gifs/book.png" height="480">
+<img align="right" src="html/gifs/book.png" height="420">
 <strong>Publisher:</strong> Cambridge University Press <br><br>
 <strong>First edition:</strong> November 2016 <br>
 <strong>Second edition:</strong> January 2020 (expected) <br><br><br>
@@ -10,15 +10,79 @@
 
 # Table of contents
 
+- [A little sampler first](#a-little-sampler-first)
 - [Who is this book for?](#who-is-this-book-for)
 - [What is in the book?](#what-is-in-the-book)
 - [What is in the repo?](#what-is-in-the-repo)
 - [Installation](#installation)
 - [Notes](#notes)
-- [Slider widgets](#slider-widgets)
 - [Creators](#creators)
 
 <br><br><br>
+
+## A little sampler first
+
+[(Back to top)](#table-of-contents)
+
+Many machine learning concepts - like convergence of an algorithm, evolution of a model from an underfitting one all the way to an overfitting model, etc. - can be illustrated and intuited best using animations (as opposed to static figures). You'll find a large number of interactive widgets - which you can modify yourself too - in this book/repo. Here are just a few examples:
+
+<img src="html/gifs/cross_validation_regression.gif" width="300px" height="auto"> | <img src="html/gifs/cross_validation_two_class.gif" width="300px" height="auto"> | <img src="html/gifs/cross_validation_multiclass.gif" width="300px" height="auto"> 
+---|---|---
+Cross-validation (regression) | Cross-validation (two-class classification) | Cross-validation (multi-class classification)
+
+<br><br>
+
+<img src="html/gifs/Kmeans.gif" width="300px" height="auto"> | <img src="html/gifs/feature_normalization.gif" width="300px" height="auto"> | <img src="html/gifs/normalized_gradient_descent.gif" width="300px" height="auto"> 
+---|---|---
+K-means clustering | Feature normalization| Normalized gradient descent
+
+<br><br>
+
+<img src="html/gifs/Rotation.gif" width="300px" height="auto"> | <img src="html/gifs/convexification.gif" width="300px" height="auto"> | <img src="html/gifs/Nurgetson.gif" width="300px" height="auto"> 
+---|---|---
+Rotation | Convexification | Dogification!
+
+<br><br>
+
+<img src="html/gifs/nonlinear_transformation.gif" width="300px" height="auto"> | <img src="html/gifs/weighted_classification.gif" width="300px" height="auto"> | <img src="html/gifs/moving_average.gif" width="300px" height="auto"> 
+---|---|---
+A nonlinear transformation | Weighted classification | The moving average
+
+<br><br>
+
+<img src="html/gifs/batch_normalization.gif" width="450px" height="auto"> | <img src="html/gifs/logistic_regression.gif" width="450px" height="auto"> 
+---|---
+Batch normalization | Logistic regression
+
+<br><br>
+
+<img src="html/gifs/poly_vs_NN_vs_trees_regression.gif" width="450px" height="auto"> | <img src="html/gifs/poly_vs_NN_vs_trees_classification.gif" width="450px" height="auto"> 
+---|---
+Polynomials vs. NNs vs. Trees (regression) | Polynomials vs. NNs vs. Trees (classification)
+
+<br><br>
+
+<img src="html/gifs/steplength_1D.gif" width="450px" height="auto"> | <img src="html/gifs/steplength_2D.gif" width="450px" height="auto"> 
+---|---
+Changing gradient descent's steplength (1d) | Changing gradient descent's steplength (2d)
+
+<br><br>
+
+<img src="html/gifs/convex_combination.gif" width="450px" height="auto"> | <img src="html/gifs/taylor_series.gif" width="450px" height="auto"> 
+---|---
+Convex combination of two functions | Taylor series approximation
+
+<br><br>
+
+<img src="html/gifs/feature_selection.gif" width="450px" height="auto"> | <img src="html/gifs/secant_2d.gif" width="450px" height="auto"> 
+---|---
+Feature selection via regularization | Secant planes
+
+<br><br>
+
+<img src="html/gifs/function_approx_NN.gif" width="450px" height="auto"> | <img src="html/gifs/regression_tree.gif" width="450px" height="auto"> 
+---|---
+Function approximation with a neural network | A regression tree
 
 ## Who is this book for?
 
@@ -208,71 +272,6 @@ With minor adjustment users can also run these notebooks using the GPU/TPU exten
 14.5 Gradient boosting  <br>
 14.6 Random forests  <br>
 14.7 Cross-validating individual trees <br><br><br>
-
-
-## Slider widgets
-
-[(Back to top)](#table-of-contents)
-
-Many machine learning concepts - like convergence of an algorithm, evolution of a model from an underfitting one all the way to an overfitting model, etc. - can be illustrated best using animations (as opposed to static figures). You'll find a large number of such animations in our notes. Here are a few examples:
-
-<img src="html/gifs/cross_validation_regression.gif" width="300px" height="auto"> | <img src="html/gifs/cross_validation_two_class.gif" width="300px" height="auto"> | <img src="html/gifs/cross_validation_multiclass.gif" width="300px" height="auto"> 
----|---|---
-Cross-validation (regression) | Cross-validation (two-class classification) | Cross-validation (multi-class classification)
-
-<br><br>
-
-<img src="html/gifs/Kmeans.gif" width="300px" height="auto"> | <img src="html/gifs/feature_normalization.gif" width="300px" height="auto"> | <img src="html/gifs/normalized_gradient_descent.gif" width="300px" height="auto"> 
----|---|---
-K-means clustering | Feature normalization| Normalized gradient descent
-
-<br><br>
-
-<img src="html/gifs/Rotation.gif" width="300px" height="auto"> | <img src="html/gifs/convexification.gif" width="300px" height="auto"> | <img src="html/gifs/Nurgetson.gif" width="300px" height="auto"> 
----|---|---
-Rotation | Convexification | Dogification!
-
-<br><br>
-
-<img src="html/gifs/nonlinear_transformation.gif" width="300px" height="auto"> | <img src="html/gifs/weighted_classification.gif" width="300px" height="auto"> | <img src="html/gifs/moving_average.gif" width="300px" height="auto"> 
----|---|---
-A nonlinear transformation | Weighted classification | The moving average
-
-<br><br>
-
-<img src="html/gifs/batch_normalization.gif" width="450px" height="auto"> | <img src="html/gifs/logistic_regression.gif" width="450px" height="auto"> 
----|---
-Batch normalization | Logistic regression
-
-<br><br>
-
-<img src="html/gifs/poly_vs_NN_vs_trees_regression.gif" width="450px" height="auto"> | <img src="html/gifs/poly_vs_NN_vs_trees_classification.gif" width="450px" height="auto"> 
----|---
-Polynomials vs. NNs vs. Trees (regression) | Polynomials vs. NNs vs. Trees (classification)
-
-<br><br>
-
-<img src="html/gifs/steplength_1D.gif" width="450px" height="auto"> | <img src="html/gifs/steplength_2D.gif" width="450px" height="auto"> 
----|---
-Changing gradient descent's steplength (1d) | Changing gradient descent's steplength (2d)
-
-<br><br>
-
-<img src="html/gifs/convex_combination.gif" width="450px" height="auto"> | <img src="html/gifs/taylor_series.gif" width="450px" height="auto"> 
----|---
-Convex combination of two functions | Taylor series approximation
-
-<br><br>
-
-<img src="html/gifs/feature_selection.gif" width="450px" height="auto"> | <img src="html/gifs/secant_2d.gif" width="450px" height="auto"> 
----|---
-Feature selection via regularization | Secant planes
-
-<br><br>
-
-<img src="html/gifs/function_approx_NN.gif" width="450px" height="auto"> | <img src="html/gifs/regression_tree.gif" width="450px" height="auto"> 
----|---
-Function approximation with a neural network | A regression tree
 
 <br><br><br>
 ## Creators 
